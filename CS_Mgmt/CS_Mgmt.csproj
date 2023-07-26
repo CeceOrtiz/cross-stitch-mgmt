@@ -99,6 +99,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Fabric.cs" />
+    <Compile Include="Models\Floss.cs" />
+    <Compile Include="Models\Pattern.cs" />
+    <Compile Include="Models\PatternFloss.cs" />
+    <Compile Include="Models\Supply.cs" />
+    <Compile Include="Models\UserFloss.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
