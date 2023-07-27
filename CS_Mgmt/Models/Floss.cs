@@ -12,7 +12,6 @@ namespace CS_Mgmt.Models
         [PrimaryKey, AutoIncrement]
         public int FlossId { get; set; }
         public string StandardName { get; set; }
-        public string Brand { get; set; }
         public string Color { get; set; }
     }
 }
