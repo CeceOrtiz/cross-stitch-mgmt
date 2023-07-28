@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CS_Mgmt"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Cross-Stitch Inventory Management - Dashboard" Height="450" Width="800">
+    <Grid x:Name="Dashboard">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="WelcomeLabel" Content="Welcome!" HorizontalAlignment="Left" Margin="38,19,0,0" VerticalAlignment="Top" FontSize="24"/>
+        <Label x:Name="PatternsLabel" Content="Patterns" HorizontalAlignment="Left" Margin="72,74,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="FlossLabel" Content="Floss" HorizontalAlignment="Left" Margin="441,74,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="ToolsLabel" Content="Tools" HorizontalAlignment="Left" Margin="72,262,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="FabricsLabel" Content="Fabrics" HorizontalAlignment="Left" Margin="441,180,0,0" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.356,0.092"/>
+        <Label x:Name="OtherSuppliesLabel" Content="Other Supplies" HorizontalAlignment="Left" Margin="441,286,0,0" VerticalAlignment="Top" FontSize="20"/>
+
     </Grid>
 </Window>
