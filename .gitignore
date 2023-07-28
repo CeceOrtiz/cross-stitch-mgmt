@@ -1,3 +1,5 @@
 .vs/
 
 *.g.cs
+
+Debug/
