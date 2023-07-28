@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using SQLite;
 using CS_Mgmt.Models;
+using SQLite;
+using CsvHelper;
 
 namespace CS_Mgmt
 {
@@ -26,19 +28,32 @@ namespace CS_Mgmt
             // Create db if it doesn't exist already
             if (!File.Exists(dbPath))
             {
-                using (var dbContext = new SQLiteConnection(dbPath))
+                using (var db = new SQLiteConnection(dbPath))
                 {
                     // Enable foreign keys
-                    dbContext.Execute("PRAGMA foreign_keys = ON;");
+                    db.Execute("PRAGMA foreign_keys = ON;");
 
-                    dbContext.CreateTable<Floss>();
-                    dbContext.CreateTable<Pattern>();
-                    dbContext.CreateTable<PatternFloss>();
-                    dbContext.CreateTable<UserFloss>();
-                    dbContext.CreateTable<Fabric>();
-                    dbContext.CreateTable<Supply>();
+                    // Create all the tables
+                    db.CreateTable<Floss>();
+                    db.CreateTable<Pattern>();
+                    db.CreateTable<PatternFloss>();
+                    db.CreateTable<UserFloss>();
+                    db.CreateTable<Fabric>();
+                    db.CreateTable<Supply>();
 
+                    // Populate the Floss table with the DMC Floss CSV
+                    string csvFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "floss_data.csv");
 
+                    if (!db.Table<Floss>().Any())
+                    {
+                        using (var reader = new  StreamReader(csvFilePath))
+                        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                        {
+                            var records = csv.GetRecords<Floss>().ToList();
+
+                            db.InsertAll(records);
+                        }
+                    }
                 }
 
             }
