@@ -107,6 +107,9 @@
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Patterns\AddPattern.xaml.cs">
+      <DependentUpon>AddPattern.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Fabric.cs" />
@@ -147,7 +150,6 @@
   <ItemGroup>
     <Folder Include="Views\Fabrics\" />
     <Folder Include="Views\Floss\" />
-    <Folder Include="Views\Patterns\" />
     <Folder Include="Views\Supplies\" />
     <Folder Include="Views\Tools\" />
   </ItemGroup>
@@ -157,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Patterns\AddPattern.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
