@@ -6,9 +6,20 @@
       xmlns:local="clr-namespace:CS_Mgmt.Views.Floss"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Background="White"
       Title="ViewEditFloss">
 
     <Grid>
-        
+        <Label x:Name="ViewEditItemLabel" Content="View/Edit Item" HorizontalAlignment="Left" Margin="37,21,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="121,218,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="180,218,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ItemIdLabel" Content="Item ID" HorizontalAlignment="Left" Margin="94,70,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="PatternIdTB" HorizontalAlignment="Left" Margin="159,74,0,0" TextWrapping="Wrap" Text="Auto" VerticalAlignment="Top" Width="60" FontSize="14"/>
+        <Label x:Name="DescriptionLabel" Content="Description" HorizontalAlignment="Left" Margin="74,106,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="DescriptionTB" HorizontalAlignment="Left" Margin="159,110,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="350" FontSize="14"/>
+        <Label x:Name="QuantityLabel" Content="Quantity" HorizontalAlignment="Left" Margin="91,140,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="QuantityTB" HorizontalAlignment="Left" Margin="159,144,0,0" TextWrapping="Wrap" Text="User" VerticalAlignment="Top" Width="60" FontSize="14"/>
+        <Label x:Name="StorageLocationLabel" Content="Storage Location" HorizontalAlignment="Left" Margin="40,176,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="StorageLocationTB" HorizontalAlignment="Left" Margin="159,180,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="170" FontSize="14"/>
     </Grid>
 </Page>
