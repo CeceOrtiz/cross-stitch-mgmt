@@ -14,7 +14,7 @@
         <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="118,260,0,0" VerticalAlignment="Top"/>
         <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="177,260,0,0" VerticalAlignment="Top"/>
         <Label x:Name="FabricIdLabel" Content="Fabric ID" HorizontalAlignment="Left" Margin="87,74,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="FabricIdTB" HorizontalAlignment="Left" Margin="156,78,0,0" TextWrapping="Wrap" Text="Auto" VerticalAlignment="Top" Width="60" FontSize="14" TextChanged="FabricIdTB_TextChanged"/>
+        <TextBox x:Name="FabricIdTB" HorizontalAlignment="Left" Margin="156,78,0,0" TextWrapping="Wrap" Text="Auto" VerticalAlignment="Top" Width="60" FontSize="14"/>
         <Label x:Name="TypeLabel" Content="Type" HorizontalAlignment="Left" Margin="108,110,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="TypeTB" HorizontalAlignment="Left" Margin="156,114,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <Label x:Name="ColorLabel" Content="Color" HorizontalAlignment="Left" Margin="104,146,0,0" VerticalAlignment="Top" FontSize="14"/>
