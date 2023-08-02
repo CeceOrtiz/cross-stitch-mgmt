@@ -3,3 +3,5 @@
 *.g.cs
 
 Debug/
+/CS_Mgmt/.vs/CS_Mgmt/v17/.suo
+/CS_Mgmt/obj/Debug/CS_Mgmt_MarkupCompile.i.cache
