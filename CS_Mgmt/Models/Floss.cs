@@ -9,7 +9,7 @@ namespace CS_Mgmt.Models
 {
     internal class Floss
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int FlossId { get; set; }
         public string StandardName { get; set; }
         public string Color { get; set; }

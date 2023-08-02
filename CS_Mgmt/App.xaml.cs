@@ -10,6 +10,8 @@ using System.Windows;
 using CS_Mgmt.Models;
 using SQLite;
 using CsvHelper;
+using CS_Mgmt.Views;
+using CS_Mgmt.Views.Dashboard;
 
 namespace CS_Mgmt
 {
@@ -21,6 +23,17 @@ namespace CS_Mgmt
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            MainWindow mainWindow = Current.MainWindow as MainWindow;
+
+            if (mainWindow == null )
+            {
+                mainWindow = new MainWindow();
+                Current.MainWindow = mainWindow;
+            }
+
+            mainWindow.MainFrame.Navigate(new Dashboard());
+            mainWindow.Show();
 
             string dbFilename = "cs_mgmt_db.db";
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), dbFilename);
@@ -51,7 +64,19 @@ namespace CS_Mgmt
                         {
                             var records = csv.GetRecords<Floss>().ToList();
 
-                            db.InsertAll(records);
+                            db.BeginTransaction();
+
+                            try
+                            {
+                                db.InsertAll(records);
+                                db.Commit();
+                            }
+
+                            catch (Exception ex)
+                            {
+                                db.Rollback();
+                                Console.WriteLine($"Exception: {ex.Message}");
+                            }
                         }
                     }
                 }

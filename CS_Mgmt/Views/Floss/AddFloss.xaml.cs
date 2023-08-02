@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CS_Mgmt
+namespace CS_Mgmt.Views.Floss
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddFloss.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddFloss : Page
     {
-        public MainWindow()
+        public AddFloss()
         {
             InitializeComponent();
         }
