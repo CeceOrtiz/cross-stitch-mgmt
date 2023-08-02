@@ -32,7 +32,7 @@ namespace CS_Mgmt
                 Current.MainWindow = mainWindow;
             }
 
-            mainWindow.MainFrame.Navigate(new Dashboard());
+            mainWindow.MainFrame.Navigate(new Dash());
             mainWindow.Show();
 
             string dbFilename = "cs_mgmt_db.db";
