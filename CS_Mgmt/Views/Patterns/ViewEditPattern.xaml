@@ -12,8 +12,8 @@
     <Grid>
         <Label x:Name="ViewEditPatternLabel" Content="View/Edit Pattern" HorizontalAlignment="Left" Margin="37,21,0,0" VerticalAlignment="Top" FontSize="26"/>
         <Label x:Name="PatternInfoLabel" Content="Pattern Info" HorizontalAlignment="Left" Margin="79,65,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="120,409,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="179,409,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="120,409,0,0" VerticalAlignment="Top" Click="Save_Click"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="179,409,0,0" VerticalAlignment="Top" Click="Cancel_Click"/>
         <Label x:Name="PatternColorsLabel" Content="Pattern Colors" HorizontalAlignment="Left" Margin="479,78,0,0" VerticalAlignment="Top" FontSize="22"/>
         <Label x:Name="PatternIdLabel" Content="Pattern ID" HorizontalAlignment="Left" Margin="82,115,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="PatternIdTB" HorizontalAlignment="Left" Margin="158,119,0,0" TextWrapping="Wrap" Text="Auto" VerticalAlignment="Top" Width="60" FontSize="14"/>

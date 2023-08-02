@@ -11,8 +11,8 @@
 
     <Grid>
         <Label x:Name="ViewEditItemLabel" Content="View/Edit Item" HorizontalAlignment="Left" Margin="37,21,0,0" VerticalAlignment="Top" FontSize="26"/>
-        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="121,218,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="180,218,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="121,218,0,0" VerticalAlignment="Top" Click="Save_Click"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="180,218,0,0" VerticalAlignment="Top" Click="Cancel_Click"/>
         <Label x:Name="ItemIdLabel" Content="Item ID" HorizontalAlignment="Left" Margin="94,70,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="PatternIdTB" HorizontalAlignment="Left" Margin="159,74,0,0" TextWrapping="Wrap" Text="Auto" VerticalAlignment="Top" Width="60" FontSize="14"/>
         <Label x:Name="DescriptionLabel" Content="Description" HorizontalAlignment="Left" Margin="74,106,0,0" VerticalAlignment="Top" FontSize="14"/>

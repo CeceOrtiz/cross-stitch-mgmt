@@ -11,8 +11,8 @@
 
     <Grid>
         <Label x:Name="AddFlossLabel" Content="Add Floss" HorizontalAlignment="Left" Margin="37,21,0,0" VerticalAlignment="Top" FontSize="26"/>
-        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="124,185,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="183,185,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="124,185,0,0" VerticalAlignment="Top" Click="Save_Click"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="183,185,0,0" VerticalAlignment="Top" Click="Cancel_Click"/>
         <Label x:Name="ColorLabel" Content="Color" HorizontalAlignment="Left" Margin="110,71,0,0" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox x:Name="ColorCB" HorizontalAlignment="Left" Margin="162,75,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
         <Label x:Name="QuantityLabel" Content="Quantity" HorizontalAlignment="Left" Margin="89,107,0,0" VerticalAlignment="Top" FontSize="14"/>

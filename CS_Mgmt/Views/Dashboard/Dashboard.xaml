@@ -14,7 +14,7 @@
         <Label x:Name="PatternsLabel" Content="Patterns" HorizontalAlignment="Left" Margin="58,78,0,0" VerticalAlignment="Top" FontSize="22"/>
         <Button x:Name="AddPattern" Content="Add Pattern" HorizontalAlignment="Left" Margin="60,156,0,0" VerticalAlignment="Top" Click="AddPattern_Click"/>
         <ComboBox x:Name="PatternsCB" HorizontalAlignment="Left" Margin="60,118,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
-        <Button x:Name="ViewEditPattern" Content="View/Edit Pattern" HorizontalAlignment="Left" Margin="150,156,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ViewEditPattern" Content="View/Edit Pattern" HorizontalAlignment="Left" Margin="150,156,0,0" VerticalAlignment="Top" Click="ViewEditPattern_Click"/>
         <Button x:Name="DeletePattern" Content="Delete Pattern" HorizontalAlignment="Left" Margin="60,189,0,0" VerticalAlignment="Top"/>
         <Label x:Name="FlossLabel" Content="Floss" HorizontalAlignment="Left" Margin="323,78,0,0" VerticalAlignment="Top" FontSize="22"/>
         <Button x:Name="DeleteFloss" Content="Delete Floss" HorizontalAlignment="Left" Margin="325,189,0,0" VerticalAlignment="Top"/>
@@ -26,13 +26,13 @@
         <Button x:Name="DeleteItem" Content="Delete Item" HorizontalAlignment="Left" Margin="325,368,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="SuppliesCB" HorizontalAlignment="Left" Margin="325,301,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
         <Label x:Name="ToolsLabel" Content="Tools" HorizontalAlignment="Left" Margin="595,73,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <Button x:Name="ShoppingList" Content="Create a Shopping List" HorizontalAlignment="Left" Margin="597,118,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="AddFloss" Content="Add Floss" HorizontalAlignment="Left" Margin="325,156,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="ViewEditFloss" Content="View/Edit Floss" HorizontalAlignment="Left" Margin="415,156,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="AddFabric" Content="Add Fabric" HorizontalAlignment="Left" Margin="60,339,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="ViewEditFabric" Content="View/Edit Fabric" HorizontalAlignment="Left" Margin="150,339,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="AddItem" Content="Add Item" HorizontalAlignment="Left" Margin="325,339,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="ViewEditItem" Content="View/Edit Item" HorizontalAlignment="Left" Margin="415,339,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ShoppingList" Content="Create a Shopping List" HorizontalAlignment="Left" Margin="597,118,0,0" VerticalAlignment="Top" Click="ShoppingList_Click"/>
+        <Button x:Name="AddFloss" Content="Add Floss" HorizontalAlignment="Left" Margin="325,156,0,0" VerticalAlignment="Top" Click="AddFloss_Click"/>
+        <Button x:Name="ViewEditFloss" Content="View/Edit Floss" HorizontalAlignment="Left" Margin="415,156,0,0" VerticalAlignment="Top" Click="ViewEditFloss_Click"/>
+        <Button x:Name="AddFabric" Content="Add Fabric" HorizontalAlignment="Left" Margin="60,339,0,0" VerticalAlignment="Top" Click="AddFabric_Click"/>
+        <Button x:Name="ViewEditFabric" Content="View/Edit Fabric" HorizontalAlignment="Left" Margin="150,339,0,0" VerticalAlignment="Top" Click="ViewEditFabric_Click"/>
+        <Button x:Name="AddItem" Content="Add Item" HorizontalAlignment="Left" Margin="325,339,0,0" VerticalAlignment="Top" Click="AddItem_Click"/>
+        <Button x:Name="ViewEditItem" Content="View/Edit Item" HorizontalAlignment="Left" Margin="415,339,0,0" VerticalAlignment="Top" Click="ViewEditItem_Click"/>
 
     </Grid>
 </Page>
