@@ -110,10 +110,10 @@
     <Compile Include="Views\Fabrics\ViewEditFabric.xaml.cs">
       <DependentUpon>ViewEditFabric.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Floss\AddFloss.xaml.cs">
+    <Compile Include="Views\FlossViews\AddFloss.xaml.cs">
       <DependentUpon>AddFloss.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Floss\ViewEditFloss.xaml.cs">
+    <Compile Include="Views\FlossViews\ViewEditFloss.xaml.cs">
       <DependentUpon>ViewEditFloss.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
@@ -185,11 +185,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Floss\AddFloss.xaml">
+    <Page Include="Views\FlossViews\AddFloss.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Floss\ViewEditFloss.xaml">
+    <Page Include="Views\FlossViews\ViewEditFloss.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

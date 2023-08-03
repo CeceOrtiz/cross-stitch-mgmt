@@ -20,6 +20,8 @@ namespace CS_Mgmt
     /// </summary>
     public partial class App : Application
     {
+        public static string DatabasePath { get; } = Path.Combine(Environment.GetFolderPath
+            (Environment.SpecialFolder.LocalApplicationData), "cs_mgmt_db.db");
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);

@@ -13,8 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CS_Mgmt.Models;
 
-namespace CS_Mgmt.Views.Floss
+namespace CS_Mgmt.Views.FlossViews
 {
     /// <summary>
     /// Interaction logic for AddFloss.xaml
@@ -24,6 +25,22 @@ namespace CS_Mgmt.Views.Floss
         public AddFloss()
         {
             InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<Floss> nonUserFlossItems = Floss.GetFloss(App.DatabasePath);
+
+            foreach (var floss in nonUserFlossItems)
+            {
+                ComboBoxItem item = new ComboBoxItem
+                {
+                    Content = $"{floss.StandardName} - {floss.Color}",
+                    Tag = floss.FlossId
+                };
+
+                ColorCB.Items.Add(item);
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)

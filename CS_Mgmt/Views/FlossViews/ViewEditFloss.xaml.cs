@@ -1,5 +1,4 @@
-﻿using CS_Mgmt.Views.Dashboard;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CS_Mgmt.Views.Floss
+namespace CS_Mgmt.Views.FlossViews
 {
     /// <summary>
     /// Interaction logic for ViewEditFloss.xaml
@@ -28,14 +27,12 @@ namespace CS_Mgmt.Views.Floss
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
+
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
+
         }
     }
 }

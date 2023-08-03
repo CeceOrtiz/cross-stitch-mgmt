@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\lacey\source\repos\cross-stitch-mgmt\CS_Mgmt\App.xaml
-11-105794620
+11-405049112
 3-1505718013
-22803771187
+22180278467
 1312066049884
-Views\Dashboard\Dashboard.xaml;Views\Fabrics\AddFabric.xaml;Views\Fabrics\ViewEditFabric.xaml;Views\Floss\AddFloss.xaml;Views\Floss\ViewEditFloss.xaml;Views\MainWindow.xaml;Views\Patterns\AddPattern.xaml;Views\Patterns\ViewEditPattern.xaml;Views\Supplies\AddItem.xaml;Views\Supplies\ViewEditItem.xaml;Views\Tools\ShoppingListReport.xaml;
+Views\Dashboard\Dashboard.xaml;Views\Fabrics\AddFabric.xaml;Views\Fabrics\ViewEditFabric.xaml;Views\FlossViews\AddFloss.xaml;Views\FlossViews\ViewEditFloss.xaml;Views\MainWindow.xaml;Views\Patterns\AddPattern.xaml;Views\Patterns\ViewEditPattern.xaml;Views\Supplies\AddItem.xaml;Views\Supplies\ViewEditItem.xaml;Views\Tools\ShoppingListReport.xaml;
 
-False
+True
 

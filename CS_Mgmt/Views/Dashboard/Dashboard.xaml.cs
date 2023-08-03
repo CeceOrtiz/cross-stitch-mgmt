@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CS_Mgmt.Views.Patterns;
-using CS_Mgmt.Views.Floss;
+using CS_Mgmt.Views.FlossViews;
 using CS_Mgmt.Views.Fabrics;
 using CS_Mgmt.Views.Supplies;
 using CS_Mgmt.Views.Tools;
