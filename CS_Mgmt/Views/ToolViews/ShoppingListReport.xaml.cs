@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CS_Mgmt.Views.Tools
+namespace CS_Mgmt.Views.ToolViews
 {
     /// <summary>
     /// Interaction logic for ShoppingListReport.xaml

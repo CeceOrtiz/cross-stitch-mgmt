@@ -14,14 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CS_Mgmt.Views.Supplies
+namespace CS_Mgmt.Views.PatternViews
 {
     /// <summary>
-    /// Interaction logic for ViewEditItem.xaml
+    /// Interaction logic for ViewEditPattern.xaml
     /// </summary>
-    public partial class ViewEditItem : Page
+    public partial class ViewEditPattern : Page
     {
-        public ViewEditItem()
+        public ViewEditPattern()
         {
             InitializeComponent();
         }

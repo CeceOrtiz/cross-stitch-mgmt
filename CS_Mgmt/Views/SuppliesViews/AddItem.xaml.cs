@@ -14,14 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CS_Mgmt.Views.Fabrics
+namespace CS_Mgmt.Views.SuppliesViews
 {
     /// <summary>
-    /// Interaction logic for AddFabric.xaml
+    /// Interaction logic for AddItem.xaml
     /// </summary>
-    public partial class AddFabric : Page
+    public partial class AddItem : Page
     {
-        public AddFabric()
+        public AddItem()
         {
             InitializeComponent();
         }

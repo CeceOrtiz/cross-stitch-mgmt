@@ -12,11 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using CS_Mgmt.Views.Patterns;
+using CS_Mgmt.Views.PatternViews;
 using CS_Mgmt.Views.FlossViews;
-using CS_Mgmt.Views.Fabrics;
-using CS_Mgmt.Views.Supplies;
-using CS_Mgmt.Views.Tools;
+using CS_Mgmt.Views.FabricsViews;
+using CS_Mgmt.Views.SuppliesViews;
+using CS_Mgmt.Views.ToolViews;
 
 namespace CS_Mgmt.Views.Dashboard
 {
