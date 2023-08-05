@@ -1,4 +1,6 @@
-﻿using CS_Mgmt.Views.Dashboard;
+﻿using CS_Mgmt.Models;
+using CS_Mgmt.Views.Dashboard;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +28,34 @@ namespace CS_Mgmt.Views.FabricsViews
             InitializeComponent();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            // Save the fabric
+            string fabricType = TypeTB.Text;
+            string fabricColor = ColorTB.Text;
+            int fabricCount = int.Parse(CountTB.Text);
+            string storageLocation = StorageLocationTB.Text;
+
+            Fabric newFabric = new Fabric
+            {
+                Type = fabricType,
+                Color = fabricColor,
+                Count = fabricCount,
+                StorageLocation = storageLocation
+            };
+
+            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+            {
+                connection.Insert(newFabric);
+            }
+
+            MessageBox.Show("Fabric saved!");
+
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
