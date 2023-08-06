@@ -1,4 +1,6 @@
-﻿using CS_Mgmt.Views.Dashboard;
+﻿using CS_Mgmt.Models;
+using CS_Mgmt.Views.Dashboard;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +30,25 @@ namespace CS_Mgmt.Views.SuppliesViews
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            // Save the item
+            string desc = DescriptionTB.Text;
+            int quantity = int.Parse(QuantityTB.Text);
+            string storageLocation = StorageLocationTB.Text;
+
+            Supply newItem = new Supply
+            {
+                Description = desc,
+                Quantity = quantity,
+                StorageLocation = storageLocation
+            };
+
+            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+            {
+                connection.Insert(newItem);
+            }
+
+            MessageBox.Show("Item saved!");
+
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
