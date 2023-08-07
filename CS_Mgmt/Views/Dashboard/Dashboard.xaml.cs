@@ -132,8 +132,11 @@ namespace CS_Mgmt.Views.Dashboard
 
         private void ViewEditItem_Click(object sender, RoutedEventArgs e)
         {
+            ComboBoxItem selectedSupply = SuppliesCB.SelectedItem as ComboBoxItem;
+            int selectedSupplyID = (int)selectedSupply.Tag;
+
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditItem());
+            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditItem(selectedSupplyID));
         }
 
         private void ShoppingList_Click(object sender, RoutedEventArgs e)

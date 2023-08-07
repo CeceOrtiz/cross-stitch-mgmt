@@ -1,4 +1,6 @@
-﻿using CS_Mgmt.Views.Dashboard;
+﻿using CS_Mgmt.Models;
+using CS_Mgmt.Views.Dashboard;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +23,45 @@ namespace CS_Mgmt.Views.SuppliesViews
     /// </summary>
     public partial class ViewEditItem : Page
     {
-        public ViewEditItem()
+        private int selectedSupplyID;
+        public ViewEditItem(int supplyID)
         {
             InitializeComponent();
+            selectedSupplyID = supplyID;
+        }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            PopulateFields(selectedSupplyID);
+        }
+        private void PopulateFields(int selectedSupplyId)
+        {
+            Supply supply = Supply.GetSelectedSupply(App.DatabasePath, selectedSupplyId);
+            DescriptionTB.Text = supply.Description;
+            QuantityTB.Text = supply.Quantity.ToString();
+            StorageLocationTB.Text = supply.StorageLocation;
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            string newDesc = DescriptionTB.Text;
+            int newQty = int.Parse(QuantityTB.Text);
+            string newStorage = StorageLocationTB.Text;
+
+            Supply supply = new Supply
+            {
+                SupplyId = selectedSupplyID,
+                Description = newDesc,
+                Quantity = newQty,
+                StorageLocation = newStorage
+            };
+
+            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+            {
+                connection.Update(supply);
+            }
+
+            MessageBox.Show("Updates saved!");
+
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }

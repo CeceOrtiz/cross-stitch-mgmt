@@ -23,5 +23,13 @@ namespace CS_Mgmt.Models
                 return allSupplies;
             }
         }
+        public static Supply GetSelectedSupply(string dbPath, int supplyID)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                Supply selectedSupply = connection.Table<Supply>().FirstOrDefault(s => s.SupplyId == supplyID);
+                return selectedSupply;
+            }
+        }
     }
 }
