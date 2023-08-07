@@ -18,5 +18,14 @@ namespace CS_Mgmt.Models
         public string Creator { get; set; }
         public string Source { get; set; }
         public string StorageLocation { get; set; }
+
+        public static List<Pattern> GetPatterns(string dbPath)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                List<Pattern> allPatterns = connection.Table<Pattern>().ToList();
+                return allPatterns;
+            }
+        }
     }
 }

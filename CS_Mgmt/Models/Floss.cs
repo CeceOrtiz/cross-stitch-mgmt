@@ -28,5 +28,18 @@ namespace CS_Mgmt.Models
             }
         }
 
+        public static List<Floss> GetUserFloss(string dbPath)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                List<Floss> allFloss = connection.Table<Floss>().ToList();
+                List<int> userFlossIDs = connection.Table<UserFloss>().Select(u => u.FlossId).ToList();
+
+                List<Floss> userFloss = allFloss.Where(floss => userFlossIDs.Contains(floss.FlossId)).ToList();
+
+                return userFloss;
+            }
+        }
+
     }
 }

@@ -15,5 +15,14 @@ namespace CS_Mgmt.Models
         public string Color { get; set; }
         public int Count { get; set; }
         public string StorageLocation { get; set; }
+
+        public static List<Fabric> GetFabrics(string dbPath)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                List<Fabric> allFabrics = connection.Table<Fabric>().ToList();
+                return allFabrics;
+            }
+        }
     }
 }

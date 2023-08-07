@@ -17,6 +17,7 @@ using CS_Mgmt.Views.FlossViews;
 using CS_Mgmt.Views.FabricsViews;
 using CS_Mgmt.Views.SuppliesViews;
 using CS_Mgmt.Views.ToolViews;
+using CS_Mgmt.Models;
 
 namespace CS_Mgmt.Views.Dashboard
 {
@@ -28,6 +29,57 @@ namespace CS_Mgmt.Views.Dashboard
         public Dash()
         {
             InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<Pattern> patterns = Pattern.GetPatterns(App.DatabasePath);
+            foreach (var pattern in patterns)
+            {
+                ComboBoxItem patternItem = new ComboBoxItem
+                {
+                    Content = pattern.Name,
+                    Tag = pattern.PatternId
+                };
+
+                PatternsCB.Items.Add(patternItem);
+            }
+
+            List<Floss> userFloss = Floss.GetUserFloss(App.DatabasePath);
+            foreach (var floss in userFloss)
+            {
+                ComboBoxItem ufItem = new ComboBoxItem
+                {
+                    Content = $"{floss.StandardName} - {floss.Color}",
+                    Tag = floss.FlossId
+                };
+
+                FlossCB.Items.Add(ufItem);
+            }
+
+            List<Fabric> fabrics = Fabric.GetFabrics(App.DatabasePath);
+            foreach (var fabric in fabrics)
+            {
+                ComboBoxItem fabricItem = new ComboBoxItem
+                {
+                    Content = $"{fabric.Type} - {fabric.Color} - {fabric.Count} ct",
+                    Tag = fabric.FabricId
+                };
+
+                FabricsCB.Items.Add(fabricItem);
+            }
+
+            List<Supply> supplies = Supply.GetSupplies(App.DatabasePath);
+            foreach (var supply in supplies)
+            {
+                ComboBoxItem supplyItem = new ComboBoxItem
+                {
+                    Content = supply.Description,
+                    Tag = supply.SupplyId
+                };
+
+                SuppliesCB.Items.Add(supplyItem);
+            }
         }
 
         private void AddPattern_Click(object sender, RoutedEventArgs e)

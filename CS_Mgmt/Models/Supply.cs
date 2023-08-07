@@ -14,5 +14,14 @@ namespace CS_Mgmt.Models
         public string Description { get; set; }
         public int Quantity { get; set; }
         public string StorageLocation { get; set; }
+
+        public static List<Supply> GetSupplies(string dbPath)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                List<Supply> allSupplies = connection.Table<Supply>().ToList();
+                return allSupplies;
+            }
+        }
     }
 }

@@ -13,5 +13,7 @@ namespace CS_Mgmt.Models
         public int FlossId { get; set; }
         public int Quantity { get; set; }
         public string StorageLocation { get; set; }
+
+        
     }
 }
