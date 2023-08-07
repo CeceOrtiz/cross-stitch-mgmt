@@ -14,6 +14,13 @@ namespace CS_Mgmt.Models
         public int Quantity { get; set; }
         public string StorageLocation { get; set; }
 
-        
+        public static UserFloss GetSelectedUserFloss(string dbPath, int flossID)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                UserFloss selectedUserFloss = connection.Table<UserFloss>().FirstOrDefault(uf => uf.FlossId == flossID);
+                return selectedUserFloss;
+            }
+        }
     }
 }

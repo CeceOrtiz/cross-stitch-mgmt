@@ -102,8 +102,11 @@ namespace CS_Mgmt.Views.Dashboard
 
         private void ViewEditFloss_Click(object sender, RoutedEventArgs e)
         {
+            ComboBoxItem selectedCBItem = FlossCB.SelectedItem as ComboBoxItem;
+            int selectedFlossId = (int)selectedCBItem.Tag;
+
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditFloss());
+            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditFloss(selectedFlossId));
         }
 
         private void AddFabric_Click(object sender, RoutedEventArgs e)

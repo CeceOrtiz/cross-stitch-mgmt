@@ -41,5 +41,14 @@ namespace CS_Mgmt.Models
             }
         }
 
+        public static Floss GetSelectedFloss(string dbPath, int flossID)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                Floss selectedFloss = connection.Table<Floss>().FirstOrDefault(f => f.FlossId == flossID);
+                return selectedFloss;
+            }
+        }
+
     }
 }

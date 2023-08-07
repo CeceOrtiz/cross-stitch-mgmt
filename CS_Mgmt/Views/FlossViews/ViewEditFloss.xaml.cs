@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CS_Mgmt.Models;
+using CS_Mgmt.Views.Dashboard;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,47 @@ namespace CS_Mgmt.Views.FlossViews
     /// </summary>
     public partial class ViewEditFloss : Page
     {
-        public ViewEditFloss()
+        private int selectedFlossId;
+
+        public ViewEditFloss(int flossId)
         {
             InitializeComponent();
+            selectedFlossId = flossId;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Populate the quantity box
+            for (int i = 0; i < 16; i++)
+            {
+                ComboBoxItem qtyItem = new ComboBoxItem
+                {
+                    Content = i,
+                    Tag = i
+                };
+
+                QuantityCB.Items.Add(qtyItem);
+            }
+
+            PopulateFields(selectedFlossId);
+        }
+
+        private void PopulateFields(int selectedFlossId)
+        {
+            Floss floss = Floss.GetSelectedFloss(App.DatabasePath, selectedFlossId);
+            ColorTB.Text = $"{floss.StandardName} - {floss.Color}";
+
+            UserFloss uFloss = UserFloss.GetSelectedUserFloss(App.DatabasePath, selectedFlossId);
+            StorageLocationTB.Text = uFloss.StorageLocation;
+
+            foreach (ComboBoxItem item in QuantityCB.Items)
+            {
+                if (item.Content.ToString() == uFloss.Quantity.ToString())
+                {
+                    QuantityCB.SelectedItem = item;
+                    break;
+                }
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -32,7 +72,8 @@ namespace CS_Mgmt.Views.FlossViews
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
     }
 }
