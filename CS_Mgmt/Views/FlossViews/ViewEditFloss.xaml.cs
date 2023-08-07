@@ -1,5 +1,6 @@
 ﻿using CS_Mgmt.Models;
 using CS_Mgmt.Views.Dashboard;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,7 +68,26 @@ namespace CS_Mgmt.Views.FlossViews
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            ComboBoxItem selectedQty = QuantityCB.SelectedItem as ComboBoxItem;
+            int newQty = (int)selectedQty.Tag;
+            string newStorage = StorageLocationTB.Text;
 
+            UserFloss userFloss = new UserFloss
+            {
+                FlossId = selectedFlossId,
+                Quantity = newQty,
+                StorageLocation = newStorage
+            };
+
+            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+            {
+                connection.Update(userFloss);
+            }
+
+            MessageBox.Show("Updates saved!");
+
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
