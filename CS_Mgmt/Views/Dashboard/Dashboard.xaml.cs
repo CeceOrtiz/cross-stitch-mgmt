@@ -117,8 +117,11 @@ namespace CS_Mgmt.Views.Dashboard
 
         private void ViewEditFabric_Click(object sender, RoutedEventArgs e)
         {
+            ComboBoxItem selectedFabric = FabricsCB.SelectedItem as ComboBoxItem;
+            int selectedFabricID = (int)selectedFabric.Tag;
+
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditFabric());
+            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditFabric(selectedFabricID));
         }
 
         private void AddItem_Click(object sender, RoutedEventArgs e)

@@ -7,22 +7,21 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Background="White"
-      Title="ViewEditFabric">
+      Title="ViewEditFabric"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Label x:Name="ViewEditFabricLabel" Content="View/Edit Fabric" HorizontalAlignment="Left" Margin="37,21,0,0" VerticalAlignment="Top" FontSize="26"/>
-        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="118,260,0,0" VerticalAlignment="Top" Click="Save_Click"/>
-        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="177,260,0,0" VerticalAlignment="Top" Click="Cancel_Click"/>
-        <Label x:Name="FabricIdLabel" Content="Fabric ID" HorizontalAlignment="Left" Margin="87,74,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="FabricIdTB" HorizontalAlignment="Left" Margin="156,78,0,0" TextWrapping="Wrap" Text="Auto" VerticalAlignment="Top" Width="60" FontSize="14"/>
-        <Label x:Name="TypeLabel" Content="Type" HorizontalAlignment="Left" Margin="108,110,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="TypeTB" HorizontalAlignment="Left" Margin="156,114,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <Label x:Name="ColorLabel" Content="Color" HorizontalAlignment="Left" Margin="104,146,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="ColorTB" HorizontalAlignment="Left" Margin="156,150,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <Label x:Name="CountLabel" Content="Count" HorizontalAlignment="Left" Margin="99,182,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="CountTB" HorizontalAlignment="Left" Margin="156,186,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <Label x:Name="StorageLocationLabel" Content="Storage Location" HorizontalAlignment="Left" Margin="33,218,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="StorageLocationTB" HorizontalAlignment="Left" Margin="156,222,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="118,220,0,0" VerticalAlignment="Top" Click="Save_Click"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="177,220,0,0" VerticalAlignment="Top" Click="Cancel_Click"/>
+        <Label x:Name="TypeLabel" Content="Type" HorizontalAlignment="Left" Margin="108,70,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="TypeTB" HorizontalAlignment="Left" Margin="156,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <Label x:Name="ColorLabel" Content="Color" HorizontalAlignment="Left" Margin="104,106,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="ColorTB" HorizontalAlignment="Left" Margin="156,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <Label x:Name="CountLabel" Content="Count" HorizontalAlignment="Left" Margin="99,142,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="CountTB" HorizontalAlignment="Left" Margin="156,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <Label x:Name="StorageLocationLabel" Content="Storage Location" HorizontalAlignment="Left" Margin="33,178,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="StorageLocationTB" HorizontalAlignment="Left" Margin="156,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
 
     </Grid>
 </Page>

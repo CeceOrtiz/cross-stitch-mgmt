@@ -24,5 +24,13 @@ namespace CS_Mgmt.Models
                 return allFabrics;
             }
         }
+        public static Fabric GetSelectedFabric(string dbPath, int fabricID)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                Fabric selectedFabric = connection.Table<Fabric>().FirstOrDefault(f => f.FabricId == fabricID);
+                return selectedFabric;
+            }
+        }
     }
 }
