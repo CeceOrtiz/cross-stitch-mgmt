@@ -164,7 +164,14 @@ namespace CS_Mgmt.Views.Dashboard
 
         private void DeleteFabrics_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("Are you sure you want to delete this fabric?", "Confirm Delete", MessageBoxButton.YesNo)
+                == MessageBoxResult.Yes)
+            {
+                ComboBoxItem selectedCBItem = FabricsCB.SelectedItem as ComboBoxItem;
+                int selectedFabricId = (int)selectedCBItem.Tag;
 
+                Fabric.DeleteFabric(App.DatabasePath, selectedFabricId);
+            }
         }
 
         private void DeleteItem_Click(object sender, RoutedEventArgs e)
