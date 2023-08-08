@@ -176,7 +176,14 @@ namespace CS_Mgmt.Views.Dashboard
 
         private void DeleteItem_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("Are you sure you want to delete this item?", "Confirm Delete", MessageBoxButton.YesNo)
+                == MessageBoxResult.Yes)
+            {
+                ComboBoxItem selectedCBItem = SuppliesCB.SelectedItem as ComboBoxItem;
+                int selectedItemId = (int)selectedCBItem.Tag;
 
+                Supply.DeleteItem(App.DatabasePath, selectedItemId);
+            }
         }
     }
 }
