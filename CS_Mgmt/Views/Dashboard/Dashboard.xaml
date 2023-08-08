@@ -16,15 +16,15 @@
         <Button x:Name="AddPattern" Content="Add Pattern" HorizontalAlignment="Left" Margin="60,156,0,0" VerticalAlignment="Top" Click="AddPattern_Click"/>
         <ComboBox x:Name="PatternsCB" HorizontalAlignment="Left" Margin="60,118,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
         <Button x:Name="ViewEditPattern" Content="View/Edit Pattern" HorizontalAlignment="Left" Margin="150,156,0,0" VerticalAlignment="Top" Click="ViewEditPattern_Click"/>
-        <Button x:Name="DeletePattern" Content="Delete Pattern" HorizontalAlignment="Left" Margin="60,189,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="DeletePattern" Content="Delete Pattern" HorizontalAlignment="Left" Margin="60,189,0,0" VerticalAlignment="Top" Click="DeletePattern_Click"/>
         <Label x:Name="FlossLabel" Content="Floss" HorizontalAlignment="Left" Margin="323,78,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <Button x:Name="DeleteFloss" Content="Delete Floss" HorizontalAlignment="Left" Margin="325,189,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="DeleteFloss" Content="Delete Floss" HorizontalAlignment="Left" Margin="325,189,0,0" VerticalAlignment="Top" Click="DeleteFloss_Click"/>
         <ComboBox x:Name="FlossCB" HorizontalAlignment="Left" Margin="325,118,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
         <Label x:Name="FabricsLabel" Content="Fabrics" HorizontalAlignment="Left" Margin="58,261,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <Button x:Name="DeleteFabrics" Content="Delete Fabric" HorizontalAlignment="Left" Margin="60,372,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="DeleteFabrics" Content="Delete Fabric" HorizontalAlignment="Left" Margin="60,372,0,0" VerticalAlignment="Top" Click="DeleteFabrics_Click"/>
         <ComboBox x:Name="FabricsCB" HorizontalAlignment="Left" Margin="60,301,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
         <Label x:Name="OtherSuppliesLabel" Content="Other Supplies" HorizontalAlignment="Center" Margin="0,257,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <Button x:Name="DeleteItem" Content="Delete Item" HorizontalAlignment="Left" Margin="325,368,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="DeleteItem" Content="Delete Item" HorizontalAlignment="Left" Margin="325,368,0,0" VerticalAlignment="Top" Click="DeleteItem_Click"/>
         <ComboBox x:Name="SuppliesCB" HorizontalAlignment="Left" Margin="325,301,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
         <Label x:Name="ToolsLabel" Content="Tools" HorizontalAlignment="Left" Margin="595,73,0,0" VerticalAlignment="Top" FontSize="22"/>
         <Button x:Name="ShoppingList" Content="Create a Shopping List" HorizontalAlignment="Left" Margin="597,118,0,0" VerticalAlignment="Top" Click="ShoppingList_Click"/>

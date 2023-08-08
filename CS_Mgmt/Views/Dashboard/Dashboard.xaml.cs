@@ -144,5 +144,32 @@ namespace CS_Mgmt.Views.Dashboard
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new ShoppingListReport());
         }
+
+        private void DeletePattern_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void DeleteFloss_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete this floss?", "Confirm Delete", MessageBoxButton.YesNo)
+                == MessageBoxResult.Yes)
+            {
+                ComboBoxItem selectedCBItem = FlossCB.SelectedItem as ComboBoxItem;
+                int selectedFlossId = (int)selectedCBItem.Tag;
+
+                Floss.DeleteFloss(App.DatabasePath, selectedFlossId);
+            }
+        }
+
+        private void DeleteFabrics_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

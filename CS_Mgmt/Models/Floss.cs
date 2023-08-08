@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using CS_Mgmt.Views.Dashboard;
+using CS_Mgmt.Views;
 using SQLite;
 
 namespace CS_Mgmt.Models
@@ -48,6 +51,19 @@ namespace CS_Mgmt.Models
                 Floss selectedFloss = connection.Table<Floss>().FirstOrDefault(f => f.FlossId == flossID);
                 return selectedFloss;
             }
+        }
+
+        public static void DeleteFloss(string dbPath, int flossID)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                connection.Table<Floss>().Delete(f => f.FlossId == flossID);
+            }
+
+            MessageBox.Show("Floss deleted.");
+
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
 
     }
