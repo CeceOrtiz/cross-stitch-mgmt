@@ -15,7 +15,18 @@
         <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="124,185,0,0" VerticalAlignment="Top" Click="Save_Click"/>
         <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="183,185,0,0" VerticalAlignment="Top" Click="Cancel_Click"/>
         <Label x:Name="ColorLabel" Content="Color" HorizontalAlignment="Left" Margin="110,71,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="ColorCB" HorizontalAlignment="Left" Margin="162,75,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
+        <ComboBox x:Name="ColorCB" ItemsSource="{Binding NonUserFloss}" SelectedItem="{Binding SelectedFloss, Mode=TwoWay}"
+                  HorizontalAlignment="Left" Margin="162,75,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding StandardName}"/>
+                        <Run Text=" - "/>
+                        <Run Text="{Binding Color}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <Label x:Name="QuantityLabel" Content="Quantity" HorizontalAlignment="Left" Margin="89,107,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label x:Name="StorageLocationLabel" Content="Storage Location" HorizontalAlignment="Left" Margin="39,143,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="StorageLocationTB" HorizontalAlignment="Left" Margin="162,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
