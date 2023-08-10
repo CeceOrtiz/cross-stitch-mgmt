@@ -101,37 +101,39 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\AddFlossVM.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\Dashboard\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Fabrics\AddFabric.xaml.cs">
+    <Compile Include="Views\FabricsViews\AddFabric.xaml.cs">
       <DependentUpon>AddFabric.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Fabrics\ViewEditFabric.xaml.cs">
+    <Compile Include="Views\FabricsViews\ViewEditFabric.xaml.cs">
       <DependentUpon>ViewEditFabric.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Floss\AddFloss.xaml.cs">
+    <Compile Include="Views\FlossViews\AddFloss.xaml.cs">
       <DependentUpon>AddFloss.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Floss\ViewEditFloss.xaml.cs">
+    <Compile Include="Views\FlossViews\ViewEditFloss.xaml.cs">
       <DependentUpon>ViewEditFloss.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Patterns\AddPattern.xaml.cs">
+    <Compile Include="Views\PatternViews\AddPattern.xaml.cs">
       <DependentUpon>AddPattern.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Patterns\ViewEditPattern.xaml.cs">
+    <Compile Include="Views\PatternViews\ViewEditPattern.xaml.cs">
       <DependentUpon>ViewEditPattern.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Supplies\AddItem.xaml.cs">
+    <Compile Include="Views\SuppliesViews\AddItem.xaml.cs">
       <DependentUpon>AddItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Supplies\ViewEditItem.xaml.cs">
+    <Compile Include="Views\SuppliesViews\ViewEditItem.xaml.cs">
       <DependentUpon>ViewEditItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Tools\ShoppingListReport.xaml.cs">
+    <Compile Include="Views\ToolViews\ShoppingListReport.xaml.cs">
       <DependentUpon>ShoppingListReport.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -177,19 +179,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Fabrics\AddFabric.xaml">
+    <Page Include="Views\FabricsViews\AddFabric.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Fabrics\ViewEditFabric.xaml">
+    <Page Include="Views\FabricsViews\ViewEditFabric.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Floss\AddFloss.xaml">
+    <Page Include="Views\FlossViews\AddFloss.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Floss\ViewEditFloss.xaml">
+    <Page Include="Views\FlossViews\ViewEditFloss.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -197,23 +199,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Patterns\AddPattern.xaml">
+    <Page Include="Views\PatternViews\AddPattern.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Patterns\ViewEditPattern.xaml">
+    <Page Include="Views\PatternViews\ViewEditPattern.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Supplies\AddItem.xaml">
+    <Page Include="Views\SuppliesViews\AddItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Supplies\ViewEditItem.xaml">
+    <Page Include="Views\SuppliesViews\ViewEditItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Tools\ShoppingListReport.xaml">
+    <Page Include="Views\ToolViews\ShoppingListReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

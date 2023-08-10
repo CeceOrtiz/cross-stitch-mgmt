@@ -1,0 +1,25 @@
+﻿<Page x:Class="CS_Mgmt.Views.FlossViews.ViewEditFloss"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CS_Mgmt.Views.FlossViews"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Background="White"
+      Title="ViewEditFloss"
+      Loaded="Page_Loaded">
+
+    <Grid>
+        <Label x:Name="ViewEditFlossLabel" Content="View/Edit Floss" HorizontalAlignment="Left" Margin="37,21,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="124,185,0,0" VerticalAlignment="Top" Click="Save_Click"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="183,185,0,0" VerticalAlignment="Top" Click="Cancel_Click"/>
+        <Label x:Name="ColorLabel" Content="Color" HorizontalAlignment="Left" Margin="110,71,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="QuantityLabel" Content="Quantity" HorizontalAlignment="Left" Margin="89,107,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="StorageLocationLabel" Content="Storage Location" HorizontalAlignment="Left" Margin="39,143,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="StorageLocationTB" HorizontalAlignment="Left" Margin="162,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <ComboBox x:Name="QuantityCB" HorizontalAlignment="Left" Margin="162,111,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
+        <TextBox x:Name="ColorTB" HorizontalAlignment="Left" Margin="162,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14" IsEnabled="False"/>
+
+    </Grid>
+</Page>

@@ -1,0 +1,95 @@
+﻿using CS_Mgmt.Views.Dashboard;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using CS_Mgmt.Models;
+using SQLite;
+
+namespace CS_Mgmt.Views.FlossViews
+{
+    /// <summary>
+    /// Interaction logic for AddFloss.xaml
+    /// </summary>
+    public partial class AddFloss : Page
+    {
+        public AddFloss()
+        {
+            InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Populate the floss options the user doesn't already have
+            List<Floss> nonUserFlossItems = Floss.GetFloss(App.DatabasePath);
+
+            foreach (var floss in nonUserFlossItems)
+            {
+                ComboBoxItem item = new ComboBoxItem
+                {
+                    Content = $"{floss.StandardName} - {floss.Color}",
+                    Tag = floss.FlossId
+                };
+
+                ColorCB.Items.Add(item);
+            }
+
+            // Populate the quantity box
+            for (int i = 0; i < 16; i++)
+            {
+                ComboBoxItem qtyItem = new ComboBoxItem
+                {
+                    Content = i,
+                    Tag = i
+                };
+
+                QuantityCB.Items.Add(qtyItem);
+            }
+
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            // Save the floss
+            ComboBoxItem selectedColor = ColorCB.SelectedItem as ComboBoxItem;
+            int flossId = (int)selectedColor.Tag;
+            ComboBoxItem selectedQty = QuantityCB.SelectedItem as ComboBoxItem;
+            int quantity = (int)selectedQty.Tag;
+            string storageLocation = StorageLocationTB.Text;
+
+            UserFloss newFloss = new UserFloss
+            {
+                FlossId = flossId,
+                Quantity = quantity,
+                StorageLocation = storageLocation
+            };
+
+            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+            {
+                connection.Insert(newFloss);
+            }
+
+            MessageBox.Show("Floss saved!");
+
+            // Navigate to dashboard
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
+        }
+    }
+}

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CS_Mgmt.Views.Floss
+namespace CS_Mgmt.Views.ToolViews
 {
     /// <summary>
-    /// Interaction logic for AddFloss.xaml
+    /// Interaction logic for ShoppingListReport.xaml
     /// </summary>
-    public partial class AddFloss : Page
+    public partial class ShoppingListReport : Page
     {
-        public AddFloss()
+        public ShoppingListReport()
         {
             InitializeComponent();
         }
