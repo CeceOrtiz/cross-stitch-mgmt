@@ -15,7 +15,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CS_Mgmt.Models;
 using SQLite;
-using CS_Mgmt.ViewModels;
 
 namespace CS_Mgmt.Views.FlossViews
 {
@@ -27,12 +26,23 @@ namespace CS_Mgmt.Views.FlossViews
         public AddFloss()
         {
             InitializeComponent();
-
-            DataContext = new AddFlossVM();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            List<Floss> nonUserFlossItems = Floss.GetFloss(App.DatabasePath);
+
+            foreach (var floss in nonUserFlossItems)
+            {
+                ComboBoxItem flossItem = new ComboBoxItem
+                {
+                    Content = $"{floss.StandardName} - {floss.Color}",
+                    Tag = floss.FlossId
+                };
+
+                ColorCB.Items.Add(flossItem);
+            }
+
             // Populate the quantity box
             for (int i = 0; i < 16; i++)
             {
