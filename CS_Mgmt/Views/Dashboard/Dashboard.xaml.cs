@@ -18,6 +18,8 @@ using CS_Mgmt.Views.FabricsViews;
 using CS_Mgmt.Views.SuppliesViews;
 using CS_Mgmt.Views.ToolViews;
 using CS_Mgmt.Models;
+using SQLite;
+using System.IO;
 
 namespace CS_Mgmt.Views.Dashboard
 {
@@ -158,7 +160,7 @@ namespace CS_Mgmt.Views.Dashboard
                 ComboBoxItem selectedCBItem = FlossCB.SelectedItem as ComboBoxItem;
                 int selectedFlossId = (int)selectedCBItem.Tag;
 
-                Floss.DeleteFloss(App.DatabasePath, selectedFlossId);
+                UserFloss.DeleteFloss(App.DatabasePath, selectedFlossId);
             }
         }
 
