@@ -18,6 +18,7 @@ using CS_Mgmt.Views.FabricsViews;
 using CS_Mgmt.Views.SuppliesViews;
 using CS_Mgmt.Views.ToolViews;
 using CS_Mgmt.Models;
+using CS_Mgmt.Validations;
 using SQLite;
 using System.IO;
 
@@ -154,13 +155,19 @@ namespace CS_Mgmt.Views.Dashboard
 
         private void DeleteFloss_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to delete this floss?", "Confirm Delete", MessageBoxButton.YesNo)
-                == MessageBoxResult.Yes)
-            {
-                ComboBoxItem selectedCBItem = FlossCB.SelectedItem as ComboBoxItem;
-                int selectedFlossId = (int)selectedCBItem.Tag;
+            ComboBoxItem selectedCBItem = FlossCB.SelectedItem as ComboBoxItem;
 
-                UserFloss.DeleteFloss(App.DatabasePath, selectedFlossId);
+            bool continueDelete = FlossValidation.ValidSelectedFloss(selectedCBItem);
+
+            if (continueDelete == true)
+            {
+                if (MessageBox.Show("Are you sure you want to delete this floss?", "Confirm Delete", MessageBoxButton.YesNo)
+                == MessageBoxResult.Yes)
+                {
+                    int selectedFlossId = (int)selectedCBItem.Tag;
+
+                    UserFloss.DeleteFloss(App.DatabasePath, selectedFlossId);
+                }
             }
         }
 

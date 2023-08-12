@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CS_Mgmt.Validations;
 
 namespace CS_Mgmt.Views.FlossViews
 {
@@ -34,7 +35,7 @@ namespace CS_Mgmt.Views.FlossViews
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // Populate the quantity box
-            for (int i = 0; i < 16; i++)
+            for (int i = 1; i < 16; i++)
             {
                 ComboBoxItem qtyItem = new ComboBoxItem
                 {
@@ -72,22 +73,27 @@ namespace CS_Mgmt.Views.FlossViews
             int newQty = (int)selectedQty.Tag;
             string newStorage = StorageLocationTB.Text;
 
-            UserFloss userFloss = new UserFloss
-            {
-                FlossId = selectedFlossId,
-                Quantity = newQty,
-                StorageLocation = newStorage
-            };
+            bool continueUpdate = FlossValidation.ValidQty(selectedQty);
 
-            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+            if (continueUpdate == true)
             {
-                connection.Update(userFloss);
+                UserFloss userFloss = new UserFloss
+                {
+                    FlossId = selectedFlossId,
+                    Quantity = newQty,
+                    StorageLocation = newStorage
+                };
+
+                using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+                {
+                    connection.Update(userFloss);
+                }
+
+                MessageBox.Show("Updates saved!");
+
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainFrame.NavigationService.Navigate(new Dash());
             }
-
-            MessageBox.Show("Updates saved!");
-
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
