@@ -101,7 +101,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Validations\FabricValidation.cs" />
     <Compile Include="Validations\FlossValidation.cs" />
+    <Compile Include="Validations\ItemValidation.cs" />
     <Compile Include="Views\Dashboard\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>

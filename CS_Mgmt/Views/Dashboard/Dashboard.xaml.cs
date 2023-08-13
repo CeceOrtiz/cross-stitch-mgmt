@@ -155,16 +155,16 @@ namespace CS_Mgmt.Views.Dashboard
 
         private void DeleteFloss_Click(object sender, RoutedEventArgs e)
         {
-            ComboBoxItem selectedCBItem = FlossCB.SelectedItem as ComboBoxItem;
+            ComboBoxItem selectedFloss = FlossCB.SelectedItem as ComboBoxItem;
 
-            bool continueDelete = FlossValidation.ValidSelectedFloss(selectedCBItem);
+            bool continueDelete = FlossValidation.ValidSelectedFloss(selectedFloss);
 
             if (continueDelete == true)
             {
                 if (MessageBox.Show("Are you sure you want to delete this floss?", "Confirm Delete", MessageBoxButton.YesNo)
                 == MessageBoxResult.Yes)
                 {
-                    int selectedFlossId = (int)selectedCBItem.Tag;
+                    int selectedFlossId = (int)selectedFloss.Tag;
 
                     UserFloss.DeleteFloss(App.DatabasePath, selectedFlossId);
                 }
@@ -173,25 +173,35 @@ namespace CS_Mgmt.Views.Dashboard
 
         private void DeleteFabrics_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to delete this fabric?", "Confirm Delete", MessageBoxButton.YesNo)
-                == MessageBoxResult.Yes)
-            {
-                ComboBoxItem selectedCBItem = FabricsCB.SelectedItem as ComboBoxItem;
-                int selectedFabricId = (int)selectedCBItem.Tag;
+            ComboBoxItem selectedFabric = FabricsCB.SelectedItem as ComboBoxItem;
+            bool continueDelete = FabricValidation.ValidSelectedFabric(selectedFabric);
 
-                Fabric.DeleteFabric(App.DatabasePath, selectedFabricId);
-            }
+            if (continueDelete == true)
+            {
+                if (MessageBox.Show("Are you sure you want to delete this fabric?", "Confirm Delete", MessageBoxButton.YesNo)
+                == MessageBoxResult.Yes)
+                {
+                    int selectedFabricId = (int)selectedFabric.Tag;
+
+                    Fabric.DeleteFabric(App.DatabasePath, selectedFabricId);
+                }
+            }          
         }
 
         private void DeleteItem_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to delete this item?", "Confirm Delete", MessageBoxButton.YesNo)
-                == MessageBoxResult.Yes)
-            {
-                ComboBoxItem selectedCBItem = SuppliesCB.SelectedItem as ComboBoxItem;
-                int selectedItemId = (int)selectedCBItem.Tag;
+            ComboBoxItem selectedItem = SuppliesCB.SelectedItem as ComboBoxItem;
+            bool continueDelete = ItemValidation.ValidSelectedItem(selectedItem);
 
-                Supply.DeleteItem(App.DatabasePath, selectedItemId);
+            if (continueDelete == true)
+            {
+                if (MessageBox.Show("Are you sure you want to delete this item?", "Confirm Delete", MessageBoxButton.YesNo)
+               == MessageBoxResult.Yes)
+                {
+                    int selectedItemId = (int)selectedItem.Tag;
+
+                    Supply.DeleteItem(App.DatabasePath, selectedItemId);
+                }
             }
         }
     }

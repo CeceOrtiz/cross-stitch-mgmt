@@ -14,13 +14,13 @@ namespace CS_Mgmt.Validations
         {
             if (colorCB == null)
             {
-                MessageBox.Show("Select a color.");
+                MessageBox.Show("Please select a color.");
                 return false;
             }
             
             if (qtyCB == null)
             {
-                MessageBox.Show("Select a quantity.");
+                MessageBox.Show("Please select a quantity.");
                 return false;
             }
 

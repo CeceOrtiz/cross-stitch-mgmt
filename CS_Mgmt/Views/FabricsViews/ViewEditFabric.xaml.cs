@@ -1,5 +1,6 @@
 ﻿using CS_Mgmt.Models;
 using CS_Mgmt.Views.Dashboard;
+using CS_Mgmt.Validations;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -46,27 +47,34 @@ namespace CS_Mgmt.Views.FabricsViews
         {
             string newType = TypeTB.Text;
             string newColor = ColorTB.Text;
-            int newCount = int.Parse(CountTB.Text);
+            string countStr = CountTB.Text;
             string newStorage = StorageLocationTB.Text;
 
-            Fabric fabric = new Fabric
-            {
-                FabricId = selectedFabricID,
-                Type = newType,
-                Color = newColor,
-                Count = newCount,
-                StorageLocation = newStorage
-            };
+            bool continueUpdate = FabricValidation.ValidFabric(newType, newColor, countStr);
 
-            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+            if (continueUpdate == true)
             {
-                connection.Update(fabric);
+                int newCount = string.IsNullOrEmpty(CountTB.Text) ? 0 : int.Parse(CountTB.Text);
+
+                Fabric fabric = new Fabric
+                {
+                    FabricId = selectedFabricID,
+                    Type = newType,
+                    Color = newColor,
+                    Count = newCount,
+                    StorageLocation = newStorage
+                };
+
+                using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+                {
+                    connection.Update(fabric);
+                }
+
+                MessageBox.Show("Updates saved!");
+
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainFrame.NavigationService.Navigate(new Dash());
             }
-
-            MessageBox.Show("Updates saved!");
-
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
