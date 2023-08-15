@@ -7,37 +7,43 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Background="White"
-      Title="AddPattern">
+      Title="AddPattern"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Label x:Name="AddPatternLabel" Content="Add Pattern" HorizontalAlignment="Left" Margin="37,21,0,0" VerticalAlignment="Top" FontSize="26"/>
-        <Label x:Name="PatternInfoLabel" Content="Pattern Info" HorizontalAlignment="Left" Margin="79,65,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="120,409,0,0" VerticalAlignment="Top" Click="Save_Click"/>
-        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="179,409,0,0" VerticalAlignment="Top" Click="Cancel_Click"/>
+        <Label x:Name="PatternInfoLabel" Content="Pattern Info" HorizontalAlignment="Left" Margin="82,78,0,0" VerticalAlignment="Top" FontSize="22"/>
+        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="132,383,0,0" VerticalAlignment="Top" Click="Save_Click"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="191,383,0,0" VerticalAlignment="Top" Click="Cancel_Click"/>
         <Label x:Name="PatternColorsLabel" Content="Pattern Colors" HorizontalAlignment="Left" Margin="479,78,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <Label x:Name="PatternIdLabel" Content="Pattern ID" HorizontalAlignment="Left" Margin="82,115,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="PatternIdTB" HorizontalAlignment="Left" Margin="158,119,0,0" TextWrapping="Wrap" Text="Auto" VerticalAlignment="Top" Width="60" FontSize="14"/>
-        <Label x:Name="NameLabel" Content="Name" HorizontalAlignment="Left" Margin="106,151,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="NameTB" HorizontalAlignment="Left" Margin="158,155,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="170" FontSize="14"/>
-        <Label x:Name="StatusLabel" Content="Status" HorizontalAlignment="Left" Margin="106,187,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="StatusCB" HorizontalAlignment="Left" Margin="158,191,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
-        <Label x:Name="DimensionsLabel" Content="Dimensions" HorizontalAlignment="Left" Margin="71,223,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="DimensionsTB" HorizontalAlignment="Left" Margin="158,227,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <Label x:Name="FabricColorLabel" Content="Fabric Color" HorizontalAlignment="Left" Margin="69,259,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="FabricColorTB" HorizontalAlignment="Left" Margin="158,263,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <Label x:Name="CreatorLabel" Content="Creator" HorizontalAlignment="Left" Margin="97,295,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="CreatorTB" HorizontalAlignment="Left" Margin="158,299,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="170" FontSize="14"/>
-        <Label x:Name="SourceLabel" Content="Source" HorizontalAlignment="Left" Margin="97,331,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="SourceTB" HorizontalAlignment="Left" Margin="158,335,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="170" FontSize="14"/>
-        <Label x:Name="StorageLocationLabel" Content="Storage Location" HorizontalAlignment="Left" Margin="35,367,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="StorageLocationTB" HorizontalAlignment="Left" Margin="158,371,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="170" FontSize="14"/>
-        <DataGrid x:Name="PatternColorsDB" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="455,119,149,209"/>
-        <Label x:Name="ColorLabel" Content="Color" HorizontalAlignment="Left" Margin="483,254,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="FlossColorCB" HorizontalAlignment="Left" Margin="531,258,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
-        <Label x:Name="SkeinsNeededLabel" Content="Skeins Needed" HorizontalAlignment="Left" Margin="424,291,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="SkeinsCB" HorizontalAlignment="Left" Margin="531,294,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
-        <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Margin="513,331,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="572,331,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NameLabel" Content="Name" HorizontalAlignment="Left" Margin="118,125,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="NameTB" HorizontalAlignment="Left" Margin="170,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <Label x:Name="StatusLabel" Content="Status" HorizontalAlignment="Left" Margin="118,161,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <ComboBox x:Name="StatusCB" HorizontalAlignment="Left" Margin="170,165,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
+        <Label x:Name="DimensionsLabel" Content="Dimensions" HorizontalAlignment="Left" Margin="83,197,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="DimensionsTB" HorizontalAlignment="Left" Margin="170,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <Label x:Name="FabricColorLabel" Content="Fabric Color" HorizontalAlignment="Left" Margin="81,233,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="FabricColorTB" HorizontalAlignment="Left" Margin="170,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <Label x:Name="CreatorLabel" Content="Creator" HorizontalAlignment="Left" Margin="109,269,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="CreatorTB" HorizontalAlignment="Left" Margin="170,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <Label x:Name="SourceLabel" Content="Source" HorizontalAlignment="Left" Margin="109,305,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="SourceTB" HorizontalAlignment="Left" Margin="170,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <Label x:Name="StorageLocationLabel" Content="Storage Location" HorizontalAlignment="Left" Margin="47,341,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="StorageLocationTB" HorizontalAlignment="Left" Margin="170,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <Label x:Name="ColorLabel" Content="Color" HorizontalAlignment="Left" Margin="486,279,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <ComboBox x:Name="FlossColorCB" HorizontalAlignment="Left" Margin="534,283,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
+        <Label x:Name="SkeinsNeededLabel" Content="Skeins Needed" HorizontalAlignment="Left" Margin="427,316,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <ComboBox x:Name="SkeinsCB" HorizontalAlignment="Left" Margin="534,319,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
+        <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Margin="508,356,0,0" VerticalAlignment="Top" Click="Add_Click"/>
+        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="556,356,0,0" VerticalAlignment="Top"/>
+        <StackPanel x:Name="PatternColorsStack" Margin="461,123,149,186">
+            <DataGrid x:Name="PatternColorsDG" Height="142" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Color"/>
+                    <DataGridTextColumn Header="Skeins Needed"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
 
     </Grid>
 </Page>

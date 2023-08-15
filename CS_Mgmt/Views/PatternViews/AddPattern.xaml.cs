@@ -1,4 +1,5 @@
 ﻿using CS_Mgmt.Views.Dashboard;
+using CS_Mgmt.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,34 @@ namespace CS_Mgmt.Views.PatternViews
         {
             InitializeComponent();
         }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<string> statuses = new List<string> {"Not purchased", "Not started", "In-progress", "Incomplete", "Completed"};
+            StatusCB.ItemsSource = statuses;
+
+            List<Floss> allFloss = Floss.GetAllFloss(App.DatabasePath);
+            foreach (var floss in allFloss)
+            {
+                ComboBoxItem flossItem = new ComboBoxItem
+                {
+                    Content = $"{floss.StandardName} - {floss.Color}",
+                    Tag = floss.FlossId
+                };
+
+                FlossColorCB.Items.Add(flossItem);
+            }
+
+            for (int i = 1; i < 11; i++)
+            {
+                ComboBoxItem skeinsQty = new ComboBoxItem
+                {
+                    Content = i,
+                    Tag = i
+                };
+
+                SkeinsCB.Items.Add(skeinsQty);
+            }
+        }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
@@ -36,6 +65,11 @@ namespace CS_Mgmt.Views.PatternViews
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

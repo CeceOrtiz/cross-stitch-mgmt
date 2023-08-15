@@ -53,5 +53,15 @@ namespace CS_Mgmt.Models
             }
         }
 
+        public static List<Floss> GetAllFloss(string dbPath)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                List<Floss> allFloss = connection.Table<Floss>().ToList();
+
+                return allFloss;
+            }
+        }
+
     }
 }
