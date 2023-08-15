@@ -60,7 +60,6 @@ namespace CS_Mgmt.Views.FlossViews
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            // Save the floss
             ComboBoxItem selectedColor = ColorCB.SelectedItem as ComboBoxItem;
             ComboBoxItem selectedQty = QuantityCB.SelectedItem as ComboBoxItem;
 

@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SQLite;
 
 namespace CS_Mgmt.Views.PatternViews
 {
@@ -29,7 +30,16 @@ namespace CS_Mgmt.Views.PatternViews
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             List<string> statuses = new List<string> {"Not purchased", "Not started", "In-progress", "Incomplete", "Completed"};
-            StatusCB.ItemsSource = statuses;
+            foreach (var status in statuses)
+            {
+                ComboBoxItem statusItem = new ComboBoxItem
+                {
+                    Content = status,
+                    Tag = status
+                };
+
+                StatusCB.Items.Add(statusItem);
+            }
 
             List<Floss> allFloss = Floss.GetAllFloss(App.DatabasePath);
             foreach (var floss in allFloss)
@@ -57,6 +67,33 @@ namespace CS_Mgmt.Views.PatternViews
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            string name = NameTB.Text;
+            ComboBoxItem selectedStatus = StatusCB.SelectedItem as ComboBoxItem;
+            string status = selectedStatus.Tag as string;
+            string dimensions = DimensionsTB.Text;
+            string fabricColor = FabricColorTB.Text;
+            string creator = CreatorTB.Text;
+            string source = SourceTB.Text;
+            string storageLocation = StorageLocationTB.Text;
+
+            Pattern newPattern = new Pattern
+            {
+                Name = name,
+                Status = status,
+                Dimensions = dimensions,
+                FabricColor = fabricColor,
+                Creator = creator,
+                Source = source,
+                StorageLocation = storageLocation
+            };
+
+            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+            {
+                connection.Insert(newPattern);
+            }
+
+            MessageBox.Show("Pattern saved!");
+
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
