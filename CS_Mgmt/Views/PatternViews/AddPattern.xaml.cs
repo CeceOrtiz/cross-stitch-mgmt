@@ -106,7 +106,22 @@ namespace CS_Mgmt.Views.PatternViews
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            ComboBoxItem selectedColor = FlossColorCB.SelectedItem as ComboBoxItem;
+            ComboBoxItem selectedQty = SkeinsCB.SelectedItem as ComboBoxItem;
 
+            PatternColorsDG.Items.Add(new PatternColorItem
+            {
+                FlossID = selectedColor.Tag.ToString(),
+                Color = selectedColor.Content.ToString(),
+                SkeinsNeeded = selectedQty.Tag.ToString()
+            });
+        }
+
+        private class PatternColorItem
+        {
+            public string FlossID { get; set; }
+            public string Color { get; set; }
+            public string SkeinsNeeded { get; set; }
         }
     }
 }

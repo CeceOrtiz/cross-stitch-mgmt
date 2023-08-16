@@ -39,8 +39,9 @@
         <StackPanel x:Name="PatternColorsStack" Margin="461,123,149,186">
             <DataGrid x:Name="PatternColorsDG" Height="142" d:ItemsSource="{d:SampleData ItemCount=5}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Color"/>
-                    <DataGridTextColumn Header="Skeins Needed"/>
+                    <DataGridTextColumn Header="ID" Binding="{Binding FlossID}"/>
+                    <DataGridTextColumn Header="Color" Binding="{Binding Color}"/>
+                    <DataGridTextColumn Header="Skeins Needed" Binding="{Binding SkeinsNeeded}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
