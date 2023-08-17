@@ -90,6 +90,26 @@ namespace CS_Mgmt.Views.PatternViews
             using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
             {
                 connection.Insert(newPattern);
+
+                int lastInsertedId = connection.ExecuteScalar<int>("SELECT last_insert_rowid()");
+
+                foreach(PatternColorItem item in PatternColorsDG.Items)
+                {
+                    int flossId = int.Parse(item.FlossID);
+                    int skeinsNeeded = int.Parse(item.SkeinsNeeded);
+
+                    string compositeKey = $"{lastInsertedId} + {flossId}";
+
+                    PatternFloss newPFloss = new PatternFloss
+                    {
+                        CompositeKey = compositeKey,
+                        PatternId = lastInsertedId,
+                        FlossId = flossId,
+                        SkeinsNeeded = skeinsNeeded
+                    };
+
+                    connection.Insert(newPFloss);
+                }
             }
 
             MessageBox.Show("Pattern saved!");
