@@ -35,9 +35,9 @@
         <Label x:Name="SkeinsNeededLabel" Content="Skeins Needed" HorizontalAlignment="Left" Margin="427,316,0,0" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox x:Name="SkeinsCB" HorizontalAlignment="Left" Margin="534,319,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
         <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Margin="508,356,0,0" VerticalAlignment="Top" Click="Add_Click"/>
-        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="556,356,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="556,356,0,0" VerticalAlignment="Top" Click="Delete_Click"/>
         <StackPanel x:Name="PatternColorsStack" Margin="461,123,149,186">
-            <DataGrid x:Name="PatternColorsDG" Height="142" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <DataGrid x:Name="PatternColorsDG" Height="142" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Single">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding FlossID}"/>
                     <DataGridTextColumn Header="Color" Binding="{Binding Color}"/>

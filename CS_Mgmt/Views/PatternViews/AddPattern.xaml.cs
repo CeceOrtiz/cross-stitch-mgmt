@@ -135,6 +135,8 @@ namespace CS_Mgmt.Views.PatternViews
                 Color = selectedColor.Content.ToString(),
                 SkeinsNeeded = selectedQty.Tag.ToString()
             });
+
+            FlossColorCB.Items.Remove(selectedColor);
         }
 
         private class PatternColorItem
@@ -142,6 +144,23 @@ namespace CS_Mgmt.Views.PatternViews
             public string FlossID { get; set; }
             public string Color { get; set; }
             public string SkeinsNeeded { get; set; }
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (PatternColorsDG.SelectedItem != null)
+            {
+                PatternColorItem selectedItem = (PatternColorItem)PatternColorsDG.SelectedItem;
+                PatternColorsDG.Items.Remove(selectedItem);
+
+                ComboBoxItem removedFloss = new ComboBoxItem
+                {
+                    Content = $"{selectedItem.Color}",
+                    Tag = selectedItem.FlossID
+                };
+
+                FlossColorCB.Items.Add(removedFloss);
+            }
         }
     }
 }
