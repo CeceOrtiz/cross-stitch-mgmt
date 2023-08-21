@@ -27,5 +27,13 @@ namespace CS_Mgmt.Models
                 return allPatterns;
             }
         }
+        public static Pattern GetSelectedPattern(string dbPath, int patternID)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                Pattern selectedPattern = connection.Table<Pattern>().FirstOrDefault(p => p.PatternId == patternID);
+                return selectedPattern;
+            }
+        }
     }
 }

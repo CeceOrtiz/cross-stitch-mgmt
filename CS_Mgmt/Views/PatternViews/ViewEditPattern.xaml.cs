@@ -1,4 +1,5 @@
-﻿using CS_Mgmt.Views.Dashboard;
+﻿using CS_Mgmt.Models;
+using CS_Mgmt.Views.Dashboard;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,70 @@ namespace CS_Mgmt.Views.PatternViews
     /// </summary>
     public partial class ViewEditPattern : Page
     {
-        public ViewEditPattern()
+        private int selectedPatternID;
+        public ViewEditPattern(int patternID)
         {
             InitializeComponent();
+            selectedPatternID = patternID;
+        }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<string> statuses = new List<string> { "Not purchased", "Not started", "In-progress", "Incomplete", "Completed" };
+            foreach (var status in statuses)
+            {
+                ComboBoxItem statusItem = new ComboBoxItem
+                {
+                    Content = status,
+                    Tag = status
+                };
+
+                StatusCB.Items.Add(statusItem);
+            }
+
+            List<Floss> allFloss = Floss.GetAllFloss(App.DatabasePath);
+            foreach (var floss in allFloss)
+            {
+                ComboBoxItem flossItem = new ComboBoxItem
+                {
+                    Content = $"{floss.StandardName} - {floss.Color}",
+                    Tag = floss.FlossId
+                };
+
+                FlossColorCB.Items.Add(flossItem);
+            }
+
+            for (int i = 1; i < 11; i++)
+            {
+                ComboBoxItem skeinsQty = new ComboBoxItem
+                {
+                    Content = i,
+                    Tag = i
+                };
+
+                SkeinsCB.Items.Add(skeinsQty);
+            }
+
+            PopulateFields(selectedPatternID);
+        }
+        private void PopulateFields(int selectedPatternID)
+        {
+            Pattern pattern = Pattern.GetSelectedPattern(App.DatabasePath, selectedPatternID);
+
+            NameTB.Text = pattern.Name;
+            DimensionsTB.Text = pattern.Dimensions;
+            FabricColorTB.Text = pattern.FabricColor;
+            CreatorTB.Text = pattern.Creator;
+            SourceTB.Text = pattern.Source;
+            StorageLocationTB.Text = pattern.StorageLocation;
+
+            foreach (ComboBoxItem item in StatusCB.Items)
+            {
+                if (item.Content.ToString() == pattern.Status.ToString())
+                {
+                    StatusCB.SelectedItem = item;
+                    break;
+                }
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)

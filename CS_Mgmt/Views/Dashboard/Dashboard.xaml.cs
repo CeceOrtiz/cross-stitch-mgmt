@@ -93,8 +93,11 @@ namespace CS_Mgmt.Views.Dashboard
 
         private void ViewEditPattern_Click(object sender, RoutedEventArgs e)
         {
+            ComboBoxItem selectedPattern = PatternsCB.SelectedItem as ComboBoxItem;
+            int selectedPatternId = (int)selectedPattern.Tag;
+
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditPattern());
+            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditPattern(selectedPatternId));
         }
 
         private void AddFloss_Click(object sender, RoutedEventArgs e)
