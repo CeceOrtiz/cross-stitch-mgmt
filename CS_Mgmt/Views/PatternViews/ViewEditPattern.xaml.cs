@@ -101,6 +101,14 @@ namespace CS_Mgmt.Views.PatternViews
                     Color = $"{thisFloss.StandardName} - {thisFloss.Color}",
                     SkeinsNeeded = p.SkeinsNeeded.ToString()
                 });
+
+                ComboBoxItem currentCBItem = FlossColorCB.Items.OfType<ComboBoxItem>()
+                    .FirstOrDefault(i => (int)i.Tag == p.FlossId);
+
+                if (currentCBItem != null)
+                {
+                    FlossColorCB.Items.Remove(currentCBItem);
+                }
             }
         }
 
@@ -116,13 +124,43 @@ namespace CS_Mgmt.Views.PatternViews
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
 
-
-
         private class PatternColorItem
         {
             public string FlossID { get; set; }
             public string Color { get; set; }
             public string SkeinsNeeded { get; set; }
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem selectedColor = FlossColorCB.SelectedItem as ComboBoxItem;
+            ComboBoxItem selectedQty = SkeinsCB.SelectedItem as ComboBoxItem;
+
+            PatternColorsDG.Items.Add(new PatternColorItem
+            {
+                FlossID = selectedColor.Tag.ToString(),
+                Color = selectedColor.Content.ToString(),
+                SkeinsNeeded = selectedQty.Tag.ToString()
+            });
+
+            FlossColorCB.Items.Remove(selectedColor);
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (PatternColorsDG.SelectedItem != null)
+            {
+                PatternColorItem selectedItem = (PatternColorItem)PatternColorsDG.SelectedItem;
+                PatternColorsDG.Items.Remove(selectedItem);
+
+                ComboBoxItem removedFloss = new ComboBoxItem
+                {
+                    Content = $"{selectedItem.Color}",
+                    Tag = selectedItem.FlossID
+                };
+
+                FlossColorCB.Items.Add(removedFloss);
+            }
         }
     }
 }
