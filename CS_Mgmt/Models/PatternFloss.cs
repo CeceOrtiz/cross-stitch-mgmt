@@ -14,5 +14,15 @@ namespace CS_Mgmt.Models
         public int PatternId { get; set; }
         public int FlossId { get; set; }
         public int SkeinsNeeded { get; set; }
+
+        public static List<PatternFloss> GetPatternFlosses(string dbPath, int patternId)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                List<PatternFloss> pFloss = connection.Table<PatternFloss>().Where(p => p.PatternId == patternId)
+                    .ToList();
+                return pFloss;
+            }
+        }
     }
 }

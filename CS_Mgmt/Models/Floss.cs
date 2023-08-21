@@ -62,6 +62,17 @@ namespace CS_Mgmt.Models
                 return allFloss;
             }
         }
+        public static List<Floss> GetPatternFlosses(string dbPath, List<PatternFloss> pFlosses)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                List<int> flossIds = pFlosses.Select(pf => pf.FlossId).ToList();
+
+                List<Floss> flossEntries = connection.Table<Floss>().Where(f => flossIds.Contains(f.FlossId)).ToList();
+
+                return flossEntries;
+            }
+        }
 
     }
 }

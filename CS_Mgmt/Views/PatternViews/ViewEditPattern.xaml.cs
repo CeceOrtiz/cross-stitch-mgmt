@@ -86,6 +86,22 @@ namespace CS_Mgmt.Views.PatternViews
                     break;
                 }
             }
+
+            // Populate the datagrid
+            List<PatternFloss> pFlosses = PatternFloss.GetPatternFlosses(App.DatabasePath, selectedPatternID);
+            List<Floss> assocFlosses = Floss.GetPatternFlosses(App.DatabasePath, pFlosses);
+
+            foreach (PatternFloss p in pFlosses)
+            {
+                Floss thisFloss = assocFlosses.FirstOrDefault(f => f.FlossId == p.FlossId);
+
+                PatternColorsDG.Items.Add(new PatternColorItem
+                {
+                    FlossID = p.FlossId.ToString(),
+                    Color = $"{thisFloss.StandardName} - {thisFloss.Color}",
+                    SkeinsNeeded = p.SkeinsNeeded.ToString()
+                });
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -98,6 +114,15 @@ namespace CS_Mgmt.Views.PatternViews
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
+        }
+
+
+
+        private class PatternColorItem
+        {
+            public string FlossID { get; set; }
+            public string Color { get; set; }
+            public string SkeinsNeeded { get; set; }
         }
     }
 }
