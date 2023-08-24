@@ -1,4 +1,5 @@
 ﻿using CS_Mgmt.Models;
+using CS_Mgmt.Validations;
 using CS_Mgmt.Views.Dashboard;
 using SQLite;
 using System;
@@ -117,59 +118,65 @@ namespace CS_Mgmt.Views.PatternViews
         {
             string name = NameTB.Text;
             ComboBoxItem selectedStatus = StatusCB.SelectedItem as ComboBoxItem;
-            string status = selectedStatus.Tag as string;
-            string dimensions = DimensionsTB.Text;
-            string fabricColor = FabricColorTB.Text;
-            string creator = CreatorTB.Text;
-            string source = SourceTB.Text;
-            string storageLocation = StorageLocationTB.Text;
 
-            Pattern newPattern = new Pattern
+            bool continueSave = PatternValidation.ValidPattern(name, selectedStatus);
+
+            if (continueSave == true)
             {
-                PatternId = selectedPatternID,
-                Name = name,
-                Status = status,
-                Dimensions = dimensions,
-                FabricColor = fabricColor,
-                Creator = creator,
-                Source = source,
-                StorageLocation = storageLocation
-            };
+                string status = selectedStatus.Tag as string;
+                string dimensions = DimensionsTB.Text;
+                string fabricColor = FabricColorTB.Text;
+                string creator = CreatorTB.Text;
+                string source = SourceTB.Text;
+                string storageLocation = StorageLocationTB.Text;
 
-            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
-            {
-                connection.BeginTransaction();
-
-                connection.Update(newPattern);
-
-                // Remove all existing pattern flosses associated with this pattern
-                connection.Execute("DELETE FROM PatternFloss WHERE PatternId = ?", selectedPatternID);
-
-                // Add back in all the pattern flosses currently in the dg
-                foreach (PatternColorItem item in PatternColorsDG.Items)
+                Pattern newPattern = new Pattern
                 {
-                    int flossId = int.Parse(item.FlossID);
-                    int skeinsNeeded = int.Parse(item.SkeinsNeeded);
+                    PatternId = selectedPatternID,
+                    Name = name,
+                    Status = status,
+                    Dimensions = dimensions,
+                    FabricColor = fabricColor,
+                    Creator = creator,
+                    Source = source,
+                    StorageLocation = storageLocation
+                };
 
-                    string compositeKey = $"{selectedPatternID} + {flossId}";
+                using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+                {
+                    connection.BeginTransaction();
 
-                    PatternFloss newPFloss = new PatternFloss
+                    connection.Update(newPattern);
+
+                    // Remove all existing pattern flosses associated with this pattern
+                    connection.Execute("DELETE FROM PatternFloss WHERE PatternId = ?", selectedPatternID);
+
+                    // Add back in all the pattern flosses currently in the dg
+                    foreach (PatternColorItem item in PatternColorsDG.Items)
                     {
-                        CompositeKey = compositeKey,
-                        PatternId = selectedPatternID,
-                        FlossId = flossId,
-                        SkeinsNeeded = skeinsNeeded
-                    };
+                        int flossId = int.Parse(item.FlossID);
+                        int skeinsNeeded = int.Parse(item.SkeinsNeeded);
 
-                    connection.Insert(newPFloss);
+                        string compositeKey = $"{selectedPatternID} + {flossId}";
+
+                        PatternFloss newPFloss = new PatternFloss
+                        {
+                            CompositeKey = compositeKey,
+                            PatternId = selectedPatternID,
+                            FlossId = flossId,
+                            SkeinsNeeded = skeinsNeeded
+                        };
+
+                        connection.Insert(newPFloss);
+                    }
+
+                    connection.Commit();
+
+                    MessageBox.Show("Pattern saved!");
+
+                    MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                    mainWindow.MainFrame.NavigationService.Navigate(new Dash());
                 }
-
-                connection.Commit();
-
-                MessageBox.Show("Pattern saved!");
-
-                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-                mainWindow.MainFrame.NavigationService.Navigate(new Dash());
             }
         }
 
