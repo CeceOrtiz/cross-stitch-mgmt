@@ -153,7 +153,21 @@ namespace CS_Mgmt.Views.Dashboard
 
         private void DeletePattern_Click(object sender, RoutedEventArgs e)
         {
-            
+            ComboBoxItem selectedPattern = PatternsCB.SelectedItem as ComboBoxItem;
+
+            bool continueDelete = PatternValidation.ValidSelectedPattern(selectedPattern);
+
+            if (continueDelete == true)
+            {
+                if (MessageBox.Show("Are you sure you want to delete this pattern?", "Confirm Delete", MessageBoxButton.YesNo)
+                == MessageBoxResult.Yes)
+                {
+                    int selectedPatternId = (int)selectedPattern.Tag;
+
+                    Pattern.DeletePattern(App.DatabasePath, selectedPatternId);
+                    PatternFloss.DeletePatternFloss(App.DatabasePath, selectedPatternId);
+                }
+            }
         }
 
         private void DeleteFloss_Click(object sender, RoutedEventArgs e)

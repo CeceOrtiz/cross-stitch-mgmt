@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CS_Mgmt.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,17 @@ namespace CS_Mgmt.Validations
             if (status == null)
             {
                 MessageBox.Show("Please choose a status.");
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool ValidSelectedPattern(ComboBoxItem pattern)
+        {
+            if (pattern == null)
+            {
+                MessageBox.Show("Select a pattern.");
                 return false;
             }
 
