@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SQLite;
+using CS_Mgmt.Validations;
 
 namespace CS_Mgmt.Views.PatternViews
 {
@@ -69,53 +70,59 @@ namespace CS_Mgmt.Views.PatternViews
         {
             string name = NameTB.Text;
             ComboBoxItem selectedStatus = StatusCB.SelectedItem as ComboBoxItem;
-            string status = selectedStatus.Tag as string;
-            string dimensions = DimensionsTB.Text;
-            string fabricColor = FabricColorTB.Text;
-            string creator = CreatorTB.Text;
-            string source = SourceTB.Text;
-            string storageLocation = StorageLocationTB.Text;
 
-            Pattern newPattern = new Pattern
+            bool continueSave = PatternValidation.ValidPattern(name, selectedStatus);
+
+            if (continueSave == true)
             {
-                Name = name,
-                Status = status,
-                Dimensions = dimensions,
-                FabricColor = fabricColor,
-                Creator = creator,
-                Source = source,
-                StorageLocation = storageLocation
-            };
+                string status = selectedStatus.Tag as string;
+                string dimensions = DimensionsTB.Text;
+                string fabricColor = FabricColorTB.Text;
+                string creator = CreatorTB.Text;
+                string source = SourceTB.Text;
+                string storageLocation = StorageLocationTB.Text;
 
-            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
-            {
-                connection.Insert(newPattern);
-
-                int lastInsertedId = connection.ExecuteScalar<int>("SELECT last_insert_rowid()");
-
-                foreach(PatternColorItem item in PatternColorsDG.Items)
+                Pattern newPattern = new Pattern
                 {
-                    int flossId = int.Parse(item.FlossID);
-                    int skeinsNeeded = int.Parse(item.SkeinsNeeded);
+                    Name = name,
+                    Status = status,
+                    Dimensions = dimensions,
+                    FabricColor = fabricColor,
+                    Creator = creator,
+                    Source = source,
+                    StorageLocation = storageLocation
+                };
 
-                    string compositeKey = $"{lastInsertedId} + {flossId}";
+                using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+                {
+                    connection.Insert(newPattern);
 
-                    PatternFloss newPFloss = new PatternFloss
+                    int lastInsertedId = connection.ExecuteScalar<int>("SELECT last_insert_rowid()");
+
+                    foreach (PatternColorItem item in PatternColorsDG.Items)
                     {
-                        CompositeKey = compositeKey,
-                        PatternId = lastInsertedId,
-                        FlossId = flossId,
-                        SkeinsNeeded = skeinsNeeded
-                    };
+                        int flossId = int.Parse(item.FlossID);
+                        int skeinsNeeded = int.Parse(item.SkeinsNeeded);
 
-                    connection.Insert(newPFloss);
+                        string compositeKey = $"{lastInsertedId} + {flossId}";
+
+                        PatternFloss newPFloss = new PatternFloss
+                        {
+                            CompositeKey = compositeKey,
+                            PatternId = lastInsertedId,
+                            FlossId = flossId,
+                            SkeinsNeeded = skeinsNeeded
+                        };
+
+                        connection.Insert(newPFloss);
+                    }
                 }
+
+                MessageBox.Show("Pattern saved!");
+
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainFrame.NavigationService.Navigate(new Dash());
             }
-
-            MessageBox.Show("Pattern saved!");
-
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -129,14 +136,27 @@ namespace CS_Mgmt.Views.PatternViews
             ComboBoxItem selectedColor = FlossColorCB.SelectedItem as ComboBoxItem;
             ComboBoxItem selectedQty = SkeinsCB.SelectedItem as ComboBoxItem;
 
-            PatternColorsDG.Items.Add(new PatternColorItem
+            if (selectedColor == null)
             {
-                FlossID = selectedColor.Tag.ToString(),
-                Color = selectedColor.Content.ToString(),
-                SkeinsNeeded = selectedQty.Tag.ToString()
-            });
+                MessageBox.Show("Please select a color.");
+            }
 
-            FlossColorCB.Items.Remove(selectedColor);
+            else if (selectedQty == null)
+            {
+                MessageBox.Show("Please select the number of skeins needed.");
+            }
+
+            else
+            {
+                PatternColorsDG.Items.Add(new PatternColorItem
+                {
+                    FlossID = selectedColor.Tag.ToString(),
+                    Color = selectedColor.Content.ToString(),
+                    SkeinsNeeded = selectedQty.Tag.ToString()
+                });
+
+                FlossColorCB.Items.Remove(selectedColor);
+            }
         }
 
         private class PatternColorItem
@@ -160,6 +180,11 @@ namespace CS_Mgmt.Views.PatternViews
                 };
 
                 FlossColorCB.Items.Add(removedFloss);
+            }
+
+            else
+            {
+                MessageBox.Show("Please select the floss you want to remove.");
             }
         }
     }

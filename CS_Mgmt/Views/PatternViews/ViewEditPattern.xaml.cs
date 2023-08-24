@@ -191,14 +191,27 @@ namespace CS_Mgmt.Views.PatternViews
             ComboBoxItem selectedColor = FlossColorCB.SelectedItem as ComboBoxItem;
             ComboBoxItem selectedQty = SkeinsCB.SelectedItem as ComboBoxItem;
 
-            PatternColorsDG.Items.Add(new PatternColorItem
+            if (selectedColor == null)
             {
-                FlossID = selectedColor.Tag.ToString(),
-                Color = selectedColor.Content.ToString(),
-                SkeinsNeeded = selectedQty.Tag.ToString()
-            });
+                MessageBox.Show("Please select a color.");
+            }
 
-            FlossColorCB.Items.Remove(selectedColor);
+            else if (selectedQty == null)
+            {
+                MessageBox.Show("Please select the number of skeins needed.");
+            }
+
+            else
+            {
+                PatternColorsDG.Items.Add(new PatternColorItem
+                {
+                    FlossID = selectedColor.Tag.ToString(),
+                    Color = selectedColor.Content.ToString(),
+                    SkeinsNeeded = selectedQty.Tag.ToString()
+                });
+
+                FlossColorCB.Items.Remove(selectedColor);
+            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -215,6 +228,11 @@ namespace CS_Mgmt.Views.PatternViews
                 };
 
                 FlossColorCB.Items.Add(removedFloss);
+            }
+
+            else
+            {
+                MessageBox.Show("Please select the floss you want to remove.");
             }
         }
     }
