@@ -29,6 +29,7 @@ namespace CS_Mgmt.Views.Dashboard
     /// </summary>
     public partial class Dash : Page
     {
+        #region Initialization
         public Dash()
         {
             InitializeComponent();
@@ -84,7 +85,9 @@ namespace CS_Mgmt.Views.Dashboard
                 SuppliesCB.Items.Add(supplyItem);
             }
         }
+        #endregion
 
+        #region Pattern
         private void AddPattern_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
@@ -99,7 +102,35 @@ namespace CS_Mgmt.Views.Dashboard
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new ViewEditPattern(selectedPatternId));
         }
+        private void DeletePattern_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem selectedPattern = PatternsCB.SelectedItem as ComboBoxItem;
 
+            bool continueDelete = PatternValidation.ValidSelectedPattern(selectedPattern);
+
+            if (continueDelete == true)
+            {
+                if (MessageBox.Show("Are you sure you want to delete this pattern?", "Confirm Delete", MessageBoxButton.YesNo)
+                == MessageBoxResult.Yes)
+                {
+                    int selectedPatternId = (int)selectedPattern.Tag;
+
+                    Pattern.DeletePattern(App.DatabasePath, selectedPatternId);
+                    PatternFloss.DeletePatternFloss(App.DatabasePath, selectedPatternId);
+                }
+            }
+        }
+        private void FlossNeeded_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem selectedPattern = PatternsCB.SelectedItem as ComboBoxItem;
+            int selectedPatternId = (int)selectedPattern.Tag;
+
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new ViewPatternFloss(selectedPatternId));
+        }
+        #endregion
+
+        #region Floss
         private void AddFloss_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
@@ -120,62 +151,6 @@ namespace CS_Mgmt.Views.Dashboard
                 mainWindow.MainFrame.NavigationService.Navigate(new ViewEditFloss(selectedFlossId));
             }
         }
-
-        private void AddFabric_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new AddFabric());
-        }
-
-        private void ViewEditFabric_Click(object sender, RoutedEventArgs e)
-        {
-            ComboBoxItem selectedFabric = FabricsCB.SelectedItem as ComboBoxItem;
-            int selectedFabricID = (int)selectedFabric.Tag;
-
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditFabric(selectedFabricID));
-        }
-
-        private void AddItem_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new AddItem());
-        }
-
-        private void ViewEditItem_Click(object sender, RoutedEventArgs e)
-        {
-            ComboBoxItem selectedSupply = SuppliesCB.SelectedItem as ComboBoxItem;
-            int selectedSupplyID = (int)selectedSupply.Tag;
-
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditItem(selectedSupplyID));
-        }
-
-        private void ShoppingList_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new ShoppingListReport());
-        }
-
-        private void DeletePattern_Click(object sender, RoutedEventArgs e)
-        {
-            ComboBoxItem selectedPattern = PatternsCB.SelectedItem as ComboBoxItem;
-
-            bool continueDelete = PatternValidation.ValidSelectedPattern(selectedPattern);
-
-            if (continueDelete == true)
-            {
-                if (MessageBox.Show("Are you sure you want to delete this pattern?", "Confirm Delete", MessageBoxButton.YesNo)
-                == MessageBoxResult.Yes)
-                {
-                    int selectedPatternId = (int)selectedPattern.Tag;
-
-                    Pattern.DeletePattern(App.DatabasePath, selectedPatternId);
-                    PatternFloss.DeletePatternFloss(App.DatabasePath, selectedPatternId);
-                }
-            }
-        }
-
         private void DeleteFloss_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedFloss = FlossCB.SelectedItem as ComboBoxItem;
@@ -194,6 +169,23 @@ namespace CS_Mgmt.Views.Dashboard
             }
         }
 
+        #endregion
+
+        #region Fabric
+        private void AddFabric_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new AddFabric());
+        }
+
+        private void ViewEditFabric_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem selectedFabric = FabricsCB.SelectedItem as ComboBoxItem;
+            int selectedFabricID = (int)selectedFabric.Tag;
+
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditFabric(selectedFabricID));
+        }
         private void DeleteFabrics_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedFabric = FabricsCB.SelectedItem as ComboBoxItem;
@@ -208,9 +200,25 @@ namespace CS_Mgmt.Views.Dashboard
 
                     Fabric.DeleteFabric(App.DatabasePath, selectedFabricId);
                 }
-            }          
+            }
+        }
+        #endregion
+
+        #region Supplies
+        private void AddItem_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new AddItem());
         }
 
+        private void ViewEditItem_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem selectedSupply = SuppliesCB.SelectedItem as ComboBoxItem;
+            int selectedSupplyID = (int)selectedSupply.Tag;
+
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditItem(selectedSupplyID));
+        }
         private void DeleteItem_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedItem = SuppliesCB.SelectedItem as ComboBoxItem;
@@ -227,14 +235,16 @@ namespace CS_Mgmt.Views.Dashboard
                 }
             }
         }
+        #endregion
 
-        private void FlossNeeded_Click(object sender, RoutedEventArgs e)
+        #region Tools
+        private void ShoppingList_Click(object sender, RoutedEventArgs e)
         {
-            ComboBoxItem selectedPattern = PatternsCB.SelectedItem as ComboBoxItem;
-            int selectedPatternId = (int)selectedPattern.Tag;
-
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new ViewPatternFloss(selectedPatternId));
+            mainWindow.MainFrame.NavigationService.Navigate(new ShoppingListReport());
         }
+
+        #endregion
+
     }
 }
