@@ -37,5 +37,17 @@ namespace CS_Mgmt.Models
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
+        public static List<UserFloss> GetPatternFlosses(string dbPath, List<PatternFloss> pFlosses)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                List<int> flossIds = pFlosses.Select(pf => pf.FlossId).ToList();
+
+                List<UserFloss> uFlossEntries = connection.Table<UserFloss>()
+                    .Where(uf => flossIds.Contains(uf.FlossId)).ToList();
+
+                return uFlossEntries;
+            }
+        }
     }
 }

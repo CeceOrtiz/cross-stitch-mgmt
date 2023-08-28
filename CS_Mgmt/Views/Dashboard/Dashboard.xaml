@@ -34,6 +34,7 @@
         <Button x:Name="ViewEditFabric" Content="View/Edit Fabric" HorizontalAlignment="Left" Margin="150,339,0,0" VerticalAlignment="Top" Click="ViewEditFabric_Click"/>
         <Button x:Name="AddItem" Content="Add Item" HorizontalAlignment="Left" Margin="325,339,0,0" VerticalAlignment="Top" Click="AddItem_Click"/>
         <Button x:Name="ViewEditItem" Content="View/Edit Item" HorizontalAlignment="Left" Margin="415,339,0,0" VerticalAlignment="Top" Click="ViewEditItem_Click"/>
+        <Button x:Name="FlossNeeded" Content="View Floss Needed" HorizontalAlignment="Left" Margin="150,189,0,0" VerticalAlignment="Top" Click="FlossNeeded_Click"/>
 
     </Grid>
 </Page>

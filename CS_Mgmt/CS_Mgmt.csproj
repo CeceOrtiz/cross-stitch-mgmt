@@ -129,6 +129,9 @@
     <Compile Include="Views\PatternViews\ViewEditPattern.xaml.cs">
       <DependentUpon>ViewEditPattern.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PatternViews\ViewPatternFloss.xaml.cs">
+      <DependentUpon>ViewPatternFloss.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SuppliesViews\AddItem.xaml.cs">
       <DependentUpon>AddItem.xaml</DependentUpon>
     </Compile>
@@ -206,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PatternViews\ViewEditPattern.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PatternViews\ViewPatternFloss.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

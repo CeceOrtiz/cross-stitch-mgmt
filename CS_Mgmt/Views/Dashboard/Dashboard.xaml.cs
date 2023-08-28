@@ -109,10 +109,16 @@ namespace CS_Mgmt.Views.Dashboard
         private void ViewEditFloss_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedCBItem = FlossCB.SelectedItem as ComboBoxItem;
-            int selectedFlossId = (int)selectedCBItem.Tag;
 
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditFloss(selectedFlossId));
+            bool continueEdit = FlossValidation.ValidSelectedFloss(selectedCBItem);
+
+            if (continueEdit == true)
+            {
+                int selectedFlossId = (int)selectedCBItem.Tag;
+
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainFrame.NavigationService.Navigate(new ViewEditFloss(selectedFlossId));
+            }
         }
 
         private void AddFabric_Click(object sender, RoutedEventArgs e)
@@ -220,6 +226,15 @@ namespace CS_Mgmt.Views.Dashboard
                     Supply.DeleteItem(App.DatabasePath, selectedItemId);
                 }
             }
+        }
+
+        private void FlossNeeded_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem selectedPattern = PatternsCB.SelectedItem as ComboBoxItem;
+            int selectedPatternId = (int)selectedPattern.Tag;
+
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new ViewPatternFloss(selectedPatternId));
         }
     }
 }
