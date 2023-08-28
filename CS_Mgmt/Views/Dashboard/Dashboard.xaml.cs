@@ -97,10 +97,16 @@ namespace CS_Mgmt.Views.Dashboard
         private void ViewEditPattern_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedPattern = PatternsCB.SelectedItem as ComboBoxItem;
-            int selectedPatternId = (int)selectedPattern.Tag;
 
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditPattern(selectedPatternId));
+            bool continueEdit = PatternValidation.ValidSelectedPattern(selectedPattern);
+
+            if (continueEdit == true)
+            {
+                int selectedPatternId = (int)selectedPattern.Tag;
+
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainFrame.NavigationService.Navigate(new ViewEditPattern(selectedPatternId));
+            }
         }
         private void DeletePattern_Click(object sender, RoutedEventArgs e)
         {
@@ -181,10 +187,16 @@ namespace CS_Mgmt.Views.Dashboard
         private void ViewEditFabric_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedFabric = FabricsCB.SelectedItem as ComboBoxItem;
-            int selectedFabricID = (int)selectedFabric.Tag;
 
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditFabric(selectedFabricID));
+            bool continueEdit = FabricValidation.ValidSelectedFabric(selectedFabric);
+
+            if (continueEdit == true)
+            {
+                int selectedFabricID = (int)selectedFabric.Tag;
+
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainFrame.NavigationService.Navigate(new ViewEditFabric(selectedFabricID));
+            }
         }
         private void DeleteFabrics_Click(object sender, RoutedEventArgs e)
         {
@@ -214,10 +226,16 @@ namespace CS_Mgmt.Views.Dashboard
         private void ViewEditItem_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedSupply = SuppliesCB.SelectedItem as ComboBoxItem;
-            int selectedSupplyID = (int)selectedSupply.Tag;
 
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new ViewEditItem(selectedSupplyID));
+            bool continueEdit = ItemValidation.ValidSelectedItem(selectedSupply);
+
+            if (continueEdit == true)
+            {
+                int selectedSupplyID = (int)selectedSupply.Tag;
+
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainFrame.NavigationService.Navigate(new ViewEditItem(selectedSupplyID));
+            }
         }
         private void DeleteItem_Click(object sender, RoutedEventArgs e)
         {

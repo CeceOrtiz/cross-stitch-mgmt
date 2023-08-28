@@ -12,9 +12,9 @@
 
     <Grid>
         <Label x:Name="ViewPatternFlossLabel" Content="View Pattern Floss" HorizontalAlignment="Left" Margin="37,21,0,0" VerticalAlignment="Top" FontSize="26"/>
-        <Button x:Name="ReturnToDash" Content="Return to Dashboard" HorizontalAlignment="Left" Margin="110,381,0,0" VerticalAlignment="Top" Click="Return_Click"/>
-        <StackPanel x:Name="PatternColorsStack" Margin="110,105,211,99">
-            <DataGrid x:Name="PatternColorsDG" d:ItemsSource="{d:SampleData ItemCount=5}" LoadingRow="PatternColorsDG_LoadingRow" SelectionMode="Single" Height="246" Width="480">
+        <Button x:Name="ReturnToDash" Content="Return to Dashboard" HorizontalAlignment="Left" Margin="37,420,0,0" VerticalAlignment="Top" Click="Return_Click"/>
+        <StackPanel x:Name="PatternColorsStack" Margin="110,71,140,50">
+            <DataGrid x:Name="PatternColorsDG" d:ItemsSource="{d:SampleData ItemCount=5}" LoadingRow="PatternColorsDG_LoadingRow" SelectionMode="Single" Height="329" Width="550" AutoGenerateColumns="False" PreviewMouseDoubleClick="PatternColorsDG_PreviewMouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding FlossID}"/>
                     <DataGridTextColumn Header="Color" Binding="{Binding Color}"/>

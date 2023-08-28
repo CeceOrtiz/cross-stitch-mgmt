@@ -67,12 +67,21 @@ namespace CS_Mgmt.Views.PatternViews
             {
                 e.Row.Background = Brushes.Yellow;
             }
+            else
+            {
+                e.Row.ClearValue(DataGridRow.BackgroundProperty);
+            }
         }
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
+        }
+
+        private void PatternColorsDG_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }
