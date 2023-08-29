@@ -153,6 +153,9 @@
     <Compile Include="Views\SuppliesViews\ViewEditItem.xaml.cs">
       <DependentUpon>ViewEditItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ToolViews\InventoryReport.xaml.cs">
+      <DependentUpon>InventoryReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ToolViews\ShoppingListReport.xaml.cs">
       <DependentUpon>ShoppingListReport.xaml</DependentUpon>
     </Compile>
@@ -236,6 +239,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SuppliesViews\ViewEditItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ToolViews\InventoryReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
