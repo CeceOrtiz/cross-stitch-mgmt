@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OfficeOpenXml;
 
 namespace CS_Mgmt.Views.PatternViews
 {
@@ -87,7 +88,34 @@ namespace CS_Mgmt.Views.PatternViews
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Change this if making commercial
+
+            using (var package = new ExcelPackage())
+            {
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Pattern Floss");
+
+                for (int col = 0; col < PatternColorsDG.Columns.Count; col++)
+                {
+                    worksheet.Cells[1, col + 1].Value = PatternColorsDG.Columns[col].Header;
+                }
+
+                for (int row = 0; row < PatternColorsDG.Items.Count;  row++)
+                {
+                    var item = PatternColorsDG.Items[row];
+
+                    for (int column = 0; column < PatternColorsDG.Columns.Count; column++)
+                    {
+                        var cellValue = PatternColorsDG.Columns[column].GetCellContent(item);
+                        worksheet.Cells[row + 2, column + 1].Value = (cellValue as TextBlock)?.Text;
+                    }
+                }
+
+                string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string excelFilePath = System.IO.Path.Combine(folderPath, "PatternFloss.xslx");
+                File.WriteAllBytes(excelFilePath, package.GetAsByteArray());
+
+                MessageBox.Show($"Spreadsheet saved to: \n{excelFilePath}", "Spreadsheet Saved", MessageBoxButton.OK);
+            }
         }
     }
 }
