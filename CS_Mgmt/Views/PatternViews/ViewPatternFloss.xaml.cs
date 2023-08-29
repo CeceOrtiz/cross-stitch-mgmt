@@ -85,14 +85,8 @@ namespace CS_Mgmt.Views.PatternViews
             e.Handled = true;
         }
 
-        private void Print_Click(object sender, RoutedEventArgs e)
+        private void Save_Click(object sender, RoutedEventArgs e)
         {
-            PrintDialog printDialog = new PrintDialog();
-
-            if (printDialog.ShowDialog() == true){
-                printDialog.PrintVisual(PatternColorsDG, "List of Floss");
-            }
-            // Add saving to PDF
             
         }
     }

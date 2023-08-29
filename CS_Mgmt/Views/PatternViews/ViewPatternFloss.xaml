@@ -23,7 +23,7 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
-        <Button x:Name="Print" Content="Print" HorizontalAlignment="Left" Margin="176,420,0,0" VerticalAlignment="Top" Click="Print_Click"/>
+        <Button x:Name="SaveToExcel" Content="Save to Excel Spreadsheet" HorizontalAlignment="Left" Margin="176,420,0,0" VerticalAlignment="Top" Click="Save_Click"/>
 
     </Grid>
 </Page>
