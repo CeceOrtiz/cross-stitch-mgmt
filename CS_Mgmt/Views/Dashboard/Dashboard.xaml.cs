@@ -261,8 +261,13 @@ namespace CS_Mgmt.Views.Dashboard
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new ShoppingListReport());
         }
-
+        private void Inventory_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new InventoryReport());
+        }
         #endregion
+
 
     }
 }

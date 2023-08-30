@@ -27,7 +27,10 @@ namespace CS_Mgmt.Views.ToolViews
             InitializeComponent();
         }
 
-        // Page Loaded
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         // Event handlers for double-clicking DGs
         private void PatternsDG_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -47,6 +50,42 @@ namespace CS_Mgmt.Views.ToolViews
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
-        
+
+        private void ItemTypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem selectedItem = ItemTypeCB.SelectedItem as ComboBoxItem;
+
+            if (selectedItem.Content.ToString() == "Patterns")
+            {
+                PatternsDG.Visibility = Visibility.Visible;
+                PatternsDG.IsEnabled = true;
+
+                // make everything else invisible/disabled
+            }
+            else if (selectedItem.Content.ToString() == "Floss")
+            {
+                // make floss enabled/visible
+
+                // make everything else invisible/disabled
+                PatternsDG.Visibility = Visibility.Hidden;
+                PatternsDG.IsEnabled = false;
+            }
+            else if (selectedItem.Content.ToString() == "Fabrics")
+            {
+                // make fabrics enabled/visible
+
+                // make everything else invisible/disabled
+                PatternsDG.Visibility = Visibility.Hidden;
+                PatternsDG.IsEnabled = false;
+            }
+            else if (selectedItem.Content.ToString() == "Other Items")
+            {
+                // make other items enabled/visible
+
+                // make everything else invisible/disabled
+                PatternsDG.Visibility = Visibility.Hidden;
+                PatternsDG.IsEnabled = false;
+            }
+        }
     }
 }

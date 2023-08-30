@@ -7,20 +7,28 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Background="White"
-      Title="InventoryReport">
+      Title="InventoryReport"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Label x:Name="ViewInventoryLabel" Content="View Inventory" HorizontalAlignment="Left" Margin="37,21,0,0" VerticalAlignment="Top" FontSize="26"/>
         <Button x:Name="ReturnToDash" Content="Return to Dashboard" HorizontalAlignment="Left" Margin="37,420,0,0" VerticalAlignment="Top" Click="Return_Click"/>
-        <Button x:Name="SaveToExcel" Content="Save to Excel Spreadsheet" HorizontalAlignment="Left" Margin="176,420,0,0" VerticalAlignment="Top" Click="Save_Click"/>
-        <StackPanel Margin="37,143,48,57">
-            <DataGrid x:Name="PatternsDG" Height="253" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Single" AutoGenerateColumns="False" PreviewMouseDoubleClick="PatternsDG_PreviewMouseDoubleClick">
+        <Button x:Name="SaveToExcel" Content="Save to Excel Spreadsheet" HorizontalAlignment="Left" Margin="176,420,0,0" VerticalAlignment="Top"/>
+        <StackPanel Margin="37,130,48,57">
+            <DataGrid x:Name="PatternsDG" Height="263" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Single" AutoGenerateColumns="False" PreviewMouseDoubleClick="PatternsDG_PreviewMouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Stored In" Binding="{Binding StorageLocation}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
+        <Label x:Name="ItemTypeLabel" Content="Item Type" HorizontalAlignment="Left" Margin="51,82,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <ComboBox x:Name="ItemTypeCB" HorizontalAlignment="Left" Margin="127,86,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True" SelectionChanged="ItemTypeCB_SelectionChanged">
+            <ComboBoxItem Content="Patterns"/>
+            <ComboBoxItem Content="Floss"/>
+            <ComboBoxItem Content="Fabrics"/>
+            <ComboBoxItem Content="Other Items"/>
+        </ComboBox>
 
     </Grid>
 </Page>

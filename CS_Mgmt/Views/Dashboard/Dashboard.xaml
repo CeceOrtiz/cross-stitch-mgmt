@@ -35,6 +35,7 @@
         <Button x:Name="AddItem" Content="Add Item" HorizontalAlignment="Left" Margin="325,339,0,0" VerticalAlignment="Top" Click="AddItem_Click"/>
         <Button x:Name="ViewEditItem" Content="View/Edit Item" HorizontalAlignment="Left" Margin="415,339,0,0" VerticalAlignment="Top" Click="ViewEditItem_Click"/>
         <Button x:Name="FlossNeeded" Content="View Floss Needed" HorizontalAlignment="Left" Margin="150,189,0,0" VerticalAlignment="Top" Click="FlossNeeded_Click"/>
+        <Button x:Name="Inventory" Content="View Your Inventory" HorizontalAlignment="Left" Margin="597,156,0,0" VerticalAlignment="Top" Click="Inventory_Click"/>
 
     </Grid>
 </Page>
