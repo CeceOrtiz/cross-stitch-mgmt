@@ -49,5 +49,14 @@ namespace CS_Mgmt.Models
                 return uFlossEntries;
             }
         }
+        public static List<UserFloss> GetAllUserFloss(string dbPath)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                List<UserFloss> allFloss = connection.Table<UserFloss>().ToList();
+
+                return allFloss;
+            }
+        }
     }
 }

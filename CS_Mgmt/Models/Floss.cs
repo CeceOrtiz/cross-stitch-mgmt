@@ -73,6 +73,5 @@ namespace CS_Mgmt.Models
                 return flossEntries;
             }
         }
-
     }
 }

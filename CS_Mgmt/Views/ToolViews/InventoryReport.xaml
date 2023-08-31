@@ -45,7 +45,6 @@
                     <DataGridTextColumn Header="Color" Binding="{Binding Color}"/>
                     <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
                     <DataGridTextColumn Header="Count" Binding="{Binding Count}"/>
-                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
                     <DataGridTextColumn Header="Stored In" Binding="{Binding StorageLocation}"/>
                 </DataGrid.Columns>
             </DataGrid>
