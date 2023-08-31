@@ -37,20 +37,6 @@ namespace CS_Mgmt.Views.ToolViews
         {
             e.Handled = true;
         }
-
-        // Classes for various DG items
-
-        // Save to Excel
-
-
-
-
-        private void Return_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
-        }
-
         private void ItemTypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem selectedItem = ItemTypeCB.SelectedItem as ComboBoxItem;
@@ -61,31 +47,68 @@ namespace CS_Mgmt.Views.ToolViews
                 PatternsDG.IsEnabled = true;
 
                 // make everything else invisible/disabled
+                FlossDG.Visibility = Visibility.Hidden;
+                FlossDG.IsEnabled = false;
+                FabricsDG.Visibility = Visibility.Hidden;
+                FabricsDG.IsEnabled = false;
+                ItemsDG.Visibility = Visibility.Hidden;
+                ItemsDG.IsEnabled = false;
             }
             else if (selectedItem.Content.ToString() == "Floss")
             {
                 // make floss enabled/visible
+                FlossDG.Visibility = Visibility.Visible;
+                FlossDG.IsEnabled = true;
 
                 // make everything else invisible/disabled
                 PatternsDG.Visibility = Visibility.Hidden;
                 PatternsDG.IsEnabled = false;
+                FabricsDG.Visibility = Visibility.Hidden;
+                FabricsDG.IsEnabled = false;
+                ItemsDG.Visibility = Visibility.Hidden;
+                ItemsDG.IsEnabled = false;
             }
             else if (selectedItem.Content.ToString() == "Fabrics")
             {
                 // make fabrics enabled/visible
+                FabricsDG.Visibility = Visibility.Visible;
+                FabricsDG.IsEnabled = true;
 
                 // make everything else invisible/disabled
                 PatternsDG.Visibility = Visibility.Hidden;
                 PatternsDG.IsEnabled = false;
+                FlossDG.Visibility = Visibility.Hidden;
+                FlossDG.IsEnabled = false;
+                ItemsDG.Visibility = Visibility.Hidden;
+                ItemsDG.IsEnabled = false;
             }
             else if (selectedItem.Content.ToString() == "Other Items")
             {
                 // make other items enabled/visible
+                ItemsDG.Visibility = Visibility.Visible;
+                ItemsDG.IsEnabled = true;
 
                 // make everything else invisible/disabled
                 PatternsDG.Visibility = Visibility.Hidden;
                 PatternsDG.IsEnabled = false;
+                FlossDG.Visibility = Visibility.Hidden;
+                FlossDG.IsEnabled = false;
+                FabricsDG.Visibility = Visibility.Hidden;
+                FabricsDG.IsEnabled = false;
             }
         }
+
+        
+
+        // Save to Excel
+
+        private void Return_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
+        }
+
+        // Classes for DG items
+
     }
 }

@@ -14,7 +14,7 @@
         <Label x:Name="ViewInventoryLabel" Content="View Inventory" HorizontalAlignment="Left" Margin="37,21,0,0" VerticalAlignment="Top" FontSize="26"/>
         <Button x:Name="ReturnToDash" Content="Return to Dashboard" HorizontalAlignment="Left" Margin="37,420,0,0" VerticalAlignment="Top" Click="Return_Click"/>
         <Button x:Name="SaveToExcel" Content="Save to Excel Spreadsheet" HorizontalAlignment="Left" Margin="176,420,0,0" VerticalAlignment="Top"/>
-        <StackPanel Margin="37,130,48,57">
+        <StackPanel x:Name="PatternsStack" Margin="37,130,48,57">
             <DataGrid x:Name="PatternsDG" Height="263" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Single" AutoGenerateColumns="False" PreviewMouseDoubleClick="PatternsDG_PreviewMouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
@@ -29,6 +29,36 @@
             <ComboBoxItem Content="Fabrics"/>
             <ComboBoxItem Content="Other Items"/>
         </ComboBox>
+        <StackPanel x:Name="FlossStack" Margin="37,130,48,57">
+            <DataGrid x:Name="FlossDG" Height="263" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Single" AutoGenerateColumns="False" PreviewMouseDoubleClick="PatternsDG_PreviewMouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Standard Name" Binding="{Binding StandardName}"/>
+                    <DataGridTextColumn Header="Color" Binding="{Binding Color}"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                    <DataGridTextColumn Header="Stored In" Binding="{Binding StorageLocation}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel x:Name="FabricsStack" Margin="37,130,48,57">
+            <DataGrid x:Name="FabricsDG" Height="263" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Single" AutoGenerateColumns="False" PreviewMouseDoubleClick="PatternsDG_PreviewMouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Color" Binding="{Binding Color}"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                    <DataGridTextColumn Header="Count" Binding="{Binding Count}"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                    <DataGridTextColumn Header="Stored In" Binding="{Binding StorageLocation}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel x:Name="ItemsStack" Margin="37,130,48,57">
+            <DataGrid x:Name="ItemsDG" Height="263" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Single" AutoGenerateColumns="False" PreviewMouseDoubleClick="PatternsDG_PreviewMouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Item" Binding="{Binding Item}"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                    <DataGridTextColumn Header="Stored In" Binding="{Binding StorageLocation}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
 
     </Grid>
 </Page>
