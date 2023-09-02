@@ -13,7 +13,7 @@
     <Grid>
         <Label x:Name="ViewInventoryLabel" Content="View Inventory" HorizontalAlignment="Left" Margin="37,21,0,0" VerticalAlignment="Top" FontSize="26"/>
         <Button x:Name="ReturnToDash" Content="Return to Dashboard" HorizontalAlignment="Left" Margin="37,420,0,0" VerticalAlignment="Top" Click="Return_Click"/>
-        <Button x:Name="SaveToExcel" Content="Save to Excel Spreadsheet" HorizontalAlignment="Left" Margin="176,420,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="SaveToExcel" Content="Save to Excel Spreadsheet" HorizontalAlignment="Left" Margin="176,420,0,0" VerticalAlignment="Top" Click="SaveToExcel_Click"/>
         <StackPanel x:Name="PatternsStack" Margin="37,130,48,57">
             <DataGrid x:Name="PatternsDG" Height="263" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Single" AutoGenerateColumns="False" PreviewMouseDoubleClick="PatternsDG_PreviewMouseDoubleClick">
                 <DataGrid.Columns>

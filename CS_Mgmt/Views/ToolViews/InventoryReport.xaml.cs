@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using CS_Mgmt.Views.Dashboard;
 using OfficeOpenXml;
 using CS_Mgmt.Models;
+using System.IO;
 
 namespace CS_Mgmt.Views.ToolViews
 {
@@ -202,6 +203,46 @@ namespace CS_Mgmt.Views.ToolViews
             public string Item { get; set; }
             public string Quantity { get; set; }
             public string StorageLocation { get; set; }
+        }
+
+        private void SaveToExcel_Click(object sender, RoutedEventArgs e)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Change this if making commercial
+
+            using (var package = new ExcelPackage())
+            {
+                SaveToSpreadsheet(package, PatternsDG, "Patterns");
+                SaveToSpreadsheet(package, FlossDG, "Floss");
+                SaveToSpreadsheet(package, FabricsDG, "Fabrics");
+                SaveToSpreadsheet(package, ItemsDG, "Other Items");
+
+                string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string excelFilePath = System.IO.Path.Combine(folderPath, "Inventory.xslx");
+                File.WriteAllBytes(excelFilePath, package.GetAsByteArray());
+
+                MessageBox.Show($"Spreadsheet saved to: \n{excelFilePath}", "Spreadsheet Saved", MessageBoxButton.OK);
+            }
+        }
+
+        private void SaveToSpreadsheet(ExcelPackage package, DataGrid dg, string sheetName)
+        {
+            ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(sheetName);
+
+            for (int col = 0; col < dg.Columns.Count; col++)
+            {
+                worksheet.Cells[1, col + 1].Value = dg.Columns[col].Header;
+            }
+
+            for (int row = 0; row < dg.Items.Count; row++)
+            {
+                var item = dg.Items[row];
+
+                for (int column = 0; column < dg.Columns.Count; column++)
+                {
+                    var cellValue = dg.Columns[column].GetCellContent(item);
+                    worksheet.Cells[row + 2, column + 1].Value = (cellValue as TextBlock)?.Text;
+                }
+            }
         }
     }
 }
