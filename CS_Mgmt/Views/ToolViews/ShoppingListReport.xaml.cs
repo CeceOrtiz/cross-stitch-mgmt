@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CS_Mgmt.Views.Dashboard;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,26 @@ namespace CS_Mgmt.Views.ToolViews
         public ShoppingListReport()
         {
             InitializeComponent();
+        }
+
+        private void SaveToExcel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Return_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
+        }
+
+        private void ItemTypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        private void ItemsDG_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
