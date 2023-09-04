@@ -15,10 +15,10 @@
         <Button x:Name="SaveToExcel" Content="Save to Excel Spreadsheet" HorizontalAlignment="Left" Margin="176,420,0,0" VerticalAlignment="Top" Click="SaveToExcel_Click"/>
         <Label x:Name="ItemTypeLabel" Content="Item Type" HorizontalAlignment="Left" Margin="484,79,0,0" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox x:Name="ItemTypeCB" HorizontalAlignment="Left" Margin="560,83,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True" SelectionChanged="ItemTypeCB_SelectionChanged">
-            <ComboBoxItem Content="Patterns"/>
+            <ComboBoxItem Content="Pattern"/>
             <ComboBoxItem Content="Floss"/>
-            <ComboBoxItem Content="Fabrics"/>
-            <ComboBoxItem Content="Other Items"/>
+            <ComboBoxItem Content="Fabric"/>
+            <ComboBoxItem Content="Other Item"/>
         </ComboBox>
         <StackPanel x:Name="ItemsStack" Margin="37,83,451,57">
             <DataGrid x:Name="ItemsDG" Height="310" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Single" AutoGenerateColumns="False" PreviewMouseDoubleClick="ItemsDG_PreviewMouseDoubleClick">
@@ -29,6 +29,23 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
+        <Label x:Name="NameLabel1" Content="Name" HorizontalAlignment="Left" Margin="467,138,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="ItemLabel1" Content="Item" HorizontalAlignment="Left" Margin="476,138,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="TypeLabel1" Content="Type" HorizontalAlignment="Left" Margin="476,138,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="ColorLabel1" Content="Color" HorizontalAlignment="Left" Margin="471,138,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="FirstTB" HorizontalAlignment="Left" Margin="519,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <Label x:Name="StoreLabel2" Content="Store" HorizontalAlignment="Left" Margin="472,178,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="QuantityLabel2" Content="Quantity" HorizontalAlignment="Left" Margin="451,178,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="ColorLabel2" Content="Color" HorizontalAlignment="Left" Margin="474,178,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="SecondTB" HorizontalAlignment="Left" Margin="519,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <Label x:Name="StoreLabel3" Content="Store" HorizontalAlignment="Left" Margin="472,218,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="CountLabel3" Content="Count" HorizontalAlignment="Left" Margin="467,218,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="ThirdTB" HorizontalAlignment="Left" Margin="519,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <Label x:Name="QuantityLabel4" Content="Quantity" HorizontalAlignment="Left" Margin="451,258,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="FourthTB" HorizontalAlignment="Left" Margin="519,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <Label x:Name="StoreLabel5" Content="Store" HorizontalAlignment="Left" Margin="472,298,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="FifthTB" HorizontalAlignment="Left" Margin="519,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <ComboBox x:Name="FlossColorCB" HorizontalAlignment="Left" Margin="519,141,0,0" VerticalAlignment="Top" Width="170" IsDropDownOpen="True"/>
 
     </Grid>
 </Page>

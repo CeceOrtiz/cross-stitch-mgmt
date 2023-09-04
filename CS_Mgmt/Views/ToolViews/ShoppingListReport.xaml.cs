@@ -39,11 +39,108 @@ namespace CS_Mgmt.Views.ToolViews
 
         private void ItemTypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ComboBoxItem cbItem = ItemTypeCB.SelectedItem as ComboBoxItem;
+            string itemType = cbItem.Content.ToString();
 
+            if (itemType == "Pattern")
+            {
+                // Labels
+                NameLabel1.Visibility = Visibility.Visible;
+                ItemLabel1.Visibility = Visibility.Hidden;
+                TypeLabel1.Visibility = Visibility.Hidden;
+                ColorLabel1.Visibility = Visibility.Hidden;
+                StoreLabel2.Visibility = Visibility.Visible;
+                QuantityLabel2.Visibility = Visibility.Hidden;
+                ColorLabel2.Visibility = Visibility.Hidden;
+                StoreLabel3.Visibility = Visibility.Hidden;
+                CountLabel3.Visibility = Visibility.Hidden;
+                QuantityLabel4.Visibility = Visibility.Hidden;
+                StoreLabel5.Visibility = Visibility.Hidden;
+
+                // Fields
+                FirstTB.Visibility = Visibility.Visible;
+                SecondTB.Visibility = Visibility.Visible;
+                ThirdTB.Visibility = Visibility.Hidden;
+                FourthTB.Visibility = Visibility.Hidden;
+                FifthTB.Visibility = Visibility.Hidden;
+                FlossColorCB.Visibility = Visibility.Hidden;
+            }
+
+            else if (itemType == "Floss")
+            {
+                // Labels
+                NameLabel1.Visibility = Visibility.Hidden;
+                ItemLabel1.Visibility = Visibility.Hidden;
+                TypeLabel1.Visibility = Visibility.Hidden;
+                ColorLabel1.Visibility = Visibility.Visible;
+                StoreLabel2.Visibility = Visibility.Hidden;
+                QuantityLabel2.Visibility = Visibility.Visible;
+                ColorLabel2.Visibility = Visibility.Hidden;
+                StoreLabel3.Visibility = Visibility.Visible;
+                CountLabel3.Visibility = Visibility.Hidden;
+                QuantityLabel4.Visibility = Visibility.Hidden;
+                StoreLabel5.Visibility = Visibility.Hidden;
+
+                // Fields
+                FirstTB.Visibility = Visibility.Hidden;
+                SecondTB.Visibility = Visibility.Visible;
+                ThirdTB.Visibility = Visibility.Visible;
+                FourthTB.Visibility = Visibility.Hidden;
+                FifthTB.Visibility = Visibility.Hidden;
+                FlossColorCB.Visibility = Visibility.Visible;
+            }
+
+            else if (itemType == "Fabric")
+            {
+                // Labels
+                NameLabel1.Visibility = Visibility.Hidden;
+                ItemLabel1.Visibility = Visibility.Hidden;
+                TypeLabel1.Visibility = Visibility.Visible;
+                ColorLabel1.Visibility = Visibility.Hidden;
+                StoreLabel2.Visibility = Visibility.Hidden;
+                QuantityLabel2.Visibility = Visibility.Hidden;
+                ColorLabel2.Visibility = Visibility.Visible;
+                StoreLabel3.Visibility = Visibility.Hidden;
+                CountLabel3.Visibility = Visibility.Visible;
+                QuantityLabel4.Visibility = Visibility.Visible;
+                StoreLabel5.Visibility = Visibility.Visible;
+
+                // Fields
+                FirstTB.Visibility = Visibility.Visible;
+                SecondTB.Visibility = Visibility.Visible;
+                ThirdTB.Visibility = Visibility.Visible;
+                FourthTB.Visibility = Visibility.Visible;
+                FifthTB.Visibility = Visibility.Visible;
+                FlossColorCB.Visibility = Visibility.Hidden;
+            }
+
+            else if (itemType == "Other Item")
+            {
+                // Labels
+                NameLabel1.Visibility = Visibility.Hidden;
+                ItemLabel1.Visibility = Visibility.Visible;
+                TypeLabel1.Visibility = Visibility.Hidden;
+                ColorLabel1.Visibility = Visibility.Hidden;
+                StoreLabel2.Visibility = Visibility.Hidden;
+                QuantityLabel2.Visibility = Visibility.Visible;
+                ColorLabel2.Visibility = Visibility.Hidden;
+                StoreLabel3.Visibility = Visibility.Visible;
+                CountLabel3.Visibility = Visibility.Hidden;
+                QuantityLabel4.Visibility = Visibility.Hidden;
+                StoreLabel5.Visibility = Visibility.Hidden;
+
+                // Fields
+                FirstTB.Visibility = Visibility.Visible;
+                SecondTB.Visibility = Visibility.Visible;
+                ThirdTB.Visibility = Visibility.Visible;
+                FourthTB.Visibility = Visibility.Hidden;
+                FifthTB.Visibility = Visibility.Hidden;
+                FlossColorCB.Visibility = Visibility.Hidden;
+            }
         }
         private void ItemsDG_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            e.Handled = true;
         }
     }
 }
