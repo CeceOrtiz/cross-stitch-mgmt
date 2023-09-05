@@ -49,7 +49,7 @@
         <TextBox x:Name="FifthTB" HorizontalAlignment="Left" Margin="519,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
         <ComboBox x:Name="FlossColorCB" HorizontalAlignment="Left" Margin="519,141,0,0" VerticalAlignment="Top" Width="170" IsDropDownOpen="True"/>
         <Button x:Name="AddItem" Content="Add Item" HorizontalAlignment="Left" Margin="567,345,0,0" VerticalAlignment="Top" Click="AddItem_Click"/>
-        <Button x:Name="RemoveItem" Content="Remove Selected Item" HorizontalAlignment="Left" Margin="533,378,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="RemoveItem" Content="Remove Selected Item" HorizontalAlignment="Left" Margin="533,378,0,0" VerticalAlignment="Top" Click="RemoveItem_Click"/>
 
     </Grid>
 </Page>
