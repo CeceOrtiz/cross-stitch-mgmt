@@ -1,4 +1,5 @@
-﻿using CS_Mgmt.Views.Dashboard;
+﻿using CS_Mgmt.Models;
+using CS_Mgmt.Views.Dashboard;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -141,6 +142,97 @@ namespace CS_Mgmt.Views.ToolViews
         private void ItemsDG_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void AddItem_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem cbItem = ItemTypeCB.SelectedItem as ComboBoxItem;
+            string itemType = cbItem.Content.ToString();
+
+            if (itemType == "Pattern")
+            {
+                ShoppingListItem sli = new ShoppingListItem
+                {
+                    Item = "Pattern",
+                    Name = FirstTB.Text,
+                    Quantity = 1,
+                    Store = SecondTB.Text
+                };
+                ItemsDG.Items.Add(sli);
+                FirstTB.Clear();
+                SecondTB.Clear();
+            }
+
+            else if (itemType == "Floss")
+            {
+                ComboBoxItem selectedFloss = FlossColorCB.SelectedItem as ComboBoxItem;
+
+                ShoppingListItem sli = new ShoppingListItem
+                {
+                    Item = "Floss",
+                    Name = selectedFloss.Content.ToString(),
+                    Quantity = int.Parse(SecondTB.Text),
+                    Store = ThirdTB.Text
+                };
+                ItemsDG.Items.Add(sli);
+                SecondTB.Clear();
+                ThirdTB.Clear();
+            }
+
+            else if (itemType == "Fabric")
+            {
+                ShoppingListItem sli = new ShoppingListItem
+                {
+                    Item = "Fabric",
+                    Name = FirstTB.Text + " - " + SecondTB.Text + " - " + ThirdTB.Text + " ct.",
+                    Quantity = int.Parse(FourthTB.Text),
+                    Store = FifthTB.Text
+                };
+                ItemsDG.Items.Add(sli);
+                FirstTB.Clear();
+                SecondTB.Clear();
+                ThirdTB.Clear();
+                FourthTB.Clear();
+                FifthTB.Clear();
+            }
+
+            else if (itemType == "Other Item")
+            {
+                ShoppingListItem sli = new ShoppingListItem
+                {
+                    Item = "Other Item",
+                    Name = FirstTB.Text,
+                    Quantity = int.Parse(SecondTB.Text),
+                    Store = ThirdTB.Text
+                };
+                ItemsDG.Items.Add(sli);
+                FirstTB.Clear();
+                SecondTB.Clear();
+                ThirdTB.Clear();
+            }
+        }
+
+        private class ShoppingListItem
+        {
+            public string Item { get; set; }
+            public string Name { get; set; }
+            public int Quantity { get; set; }
+            public string Store { get; set; }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<Floss> allFloss = Floss.GetAllFloss(App.DatabasePath);
+            foreach (var floss in allFloss)
+            {
+                ComboBoxItem flossItem = new ComboBoxItem
+                {
+                    Content = $"{floss.StandardName} - {floss.Color}",
+                    Tag = floss.FlossId
+                };
+
+                FlossColorCB.Items.Add(flossItem);
+            }
         }
     }
 }
