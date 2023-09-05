@@ -1,7 +1,9 @@
 ﻿using CS_Mgmt.Models;
 using CS_Mgmt.Views.Dashboard;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +31,38 @@ namespace CS_Mgmt.Views.ToolViews
 
         private void SaveToExcel_Click(object sender, RoutedEventArgs e)
         {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Change this if making commercial
 
+            using (var package = new ExcelPackage())
+            {
+                SaveToSpreadsheet(package, ItemsDG, "Shopping List");
+
+                string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string excelFilePath = System.IO.Path.Combine(folderPath, "ShoppingList.xslx");
+                File.WriteAllBytes(excelFilePath, package.GetAsByteArray());
+
+                MessageBox.Show($"Spreadsheet saved to: \n{excelFilePath}", "Spreadsheet Saved", MessageBoxButton.OK);
+            }
+        }
+        private void SaveToSpreadsheet(ExcelPackage package, DataGrid dg, string sheetName)
+        {
+            ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(sheetName);
+
+            for (int col = 0; col < dg.Columns.Count; col++)
+            {
+                worksheet.Cells[1, col + 1].Value = dg.Columns[col].Header;
+            }
+
+            for (int row = 0; row < dg.Items.Count; row++)
+            {
+                var item = dg.Items[row];
+
+                for (int column = 0; column < dg.Columns.Count; column++)
+                {
+                    var cellValue = dg.Columns[column].GetCellContent(item);
+                    worksheet.Cells[row + 2, column + 1].Value = (cellValue as TextBlock)?.Text;
+                }
+            }
         }
 
         private void Return_Click(object sender, RoutedEventArgs e)
