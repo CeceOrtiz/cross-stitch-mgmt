@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace CS_Mgmt.Views.FabricsViews
 {
@@ -28,12 +29,6 @@ namespace CS_Mgmt.Views.FabricsViews
         {
             InitializeComponent();
         }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             // Save the fabric
@@ -72,6 +67,17 @@ namespace CS_Mgmt.Views.FabricsViews
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
+        }
+
+        private void CountTB_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = IsTextNumeric(e.Text);
+        }
+
+        private static bool IsTextNumeric(string text)
+        {
+            Regex reg = new Regex("[^0-9]");
+            return reg.IsMatch(text);
         }
     }
 }

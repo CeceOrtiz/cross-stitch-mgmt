@@ -19,7 +19,7 @@
         <Label x:Name="ColorLabel" Content="Color" HorizontalAlignment="Left" Margin="104,106,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="ColorTB" HorizontalAlignment="Left" Margin="156,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <Label x:Name="CountLabel" Content="Count" HorizontalAlignment="Left" Margin="99,142,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="CountTB" HorizontalAlignment="Left" Margin="156,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <TextBox x:Name="CountTB" HorizontalAlignment="Left" Margin="156,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14" PreviewTextInput="CountTB_PreviewTextInput"/>
         <Label x:Name="StorageLocationLabel" Content="Storage Location" HorizontalAlignment="Left" Margin="33,178,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="StorageLocationTB" HorizontalAlignment="Left" Margin="156,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
 
