@@ -120,6 +120,7 @@
     <Compile Include="Validations\FlossValidation.cs" />
     <Compile Include="Validations\ItemValidation.cs" />
     <Compile Include="Validations\PatternValidation.cs" />
+    <Compile Include="Validations\ShoppingValidation.cs" />
     <Compile Include="Views\Dashboard\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>

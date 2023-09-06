@@ -39,12 +39,12 @@
         <Label x:Name="StoreLabel2" Content="Store" HorizontalAlignment="Left" Margin="472,178,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label x:Name="QuantityLabel2" Content="Quantity" HorizontalAlignment="Left" Margin="451,178,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label x:Name="ColorLabel2" Content="Color" HorizontalAlignment="Left" Margin="474,178,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="SecondTB" HorizontalAlignment="Left" Margin="519,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <TextBox x:Name="SecondTB" HorizontalAlignment="Left" Margin="519,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14" PreviewTextInput="SecondTB_PreviewTextInput"/>
         <Label x:Name="StoreLabel3" Content="Store" HorizontalAlignment="Left" Margin="472,218,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label x:Name="CountLabel3" Content="Count" HorizontalAlignment="Left" Margin="467,218,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="ThirdTB" HorizontalAlignment="Left" Margin="519,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <TextBox x:Name="ThirdTB" HorizontalAlignment="Left" Margin="519,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14" PreviewTextInput="ThirdTB_PreviewTextInput"/>
         <Label x:Name="QuantityLabel4" Content="Quantity" HorizontalAlignment="Left" Margin="451,258,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="FourthTB" HorizontalAlignment="Left" Margin="519,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <TextBox x:Name="FourthTB" HorizontalAlignment="Left" Margin="519,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14" PreviewTextInput="FourthTB_PreviewTextInput"/>
         <Label x:Name="StoreLabel5" Content="Store" HorizontalAlignment="Left" Margin="472,298,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="FifthTB" HorizontalAlignment="Left" Margin="519,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
         <ComboBox x:Name="FlossColorCB" HorizontalAlignment="Left" Margin="519,141,0,0" VerticalAlignment="Top" Width="170" IsDropDownOpen="True"/>
