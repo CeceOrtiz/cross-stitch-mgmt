@@ -12,7 +12,7 @@ namespace CS_Mgmt.Models
 {
     internal class Supply
     {
-        [PrimaryKey]
+        [PrimaryKey, AutoIncrement]
         public int SupplyId { get; set; }
         public string Description { get; set; }
         public int Quantity { get; set; }
