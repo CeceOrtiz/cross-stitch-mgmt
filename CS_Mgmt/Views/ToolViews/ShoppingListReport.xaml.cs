@@ -266,6 +266,8 @@ namespace CS_Mgmt.Views.ToolViews
 
                 FlossColorCB.Items.Add(flossItem);
             }
+
+            ItemTypeCB.SelectedIndex = 0;
         }
 
         private void RemoveItem_Click(object sender, RoutedEventArgs e)

@@ -35,6 +35,7 @@ namespace CS_Mgmt.Views.ToolViews
             PopulateFabrics(App.DatabasePath);
             PopulateOtherItems(App.DatabasePath);
             PopulateFloss(App.DatabasePath);
+            ItemTypeCB.SelectedIndex = 0;
         }
 
         // Methods for populating DGs
