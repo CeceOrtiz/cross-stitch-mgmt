@@ -111,7 +111,17 @@ namespace CS_Mgmt.Views.PatternViews
                 }
 
                 string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string excelFilePath = System.IO.Path.Combine(folderPath, "PatternFloss.xslx");
+                string excelFilePath = System.IO.Path.Combine(folderPath, "PatternFloss.xlsx");
+                string baseFileName = "PatternFloss";
+
+                int fileCounter = 1;
+                while (File.Exists(excelFilePath))
+                {
+                    string tempFileName = $"{baseFileName}({fileCounter}).xlsx";
+                    excelFilePath = System.IO.Path.Combine(folderPath, tempFileName);
+                    fileCounter++;
+                }
+
                 File.WriteAllBytes(excelFilePath, package.GetAsByteArray());
 
                 MessageBox.Show($"Spreadsheet saved to: \n{excelFilePath}", "Spreadsheet Saved", MessageBoxButton.OK);

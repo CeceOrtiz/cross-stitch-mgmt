@@ -218,7 +218,17 @@ namespace CS_Mgmt.Views.ToolViews
                 SaveToSpreadsheet(package, ItemsDG, "Other Items");
 
                 string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string excelFilePath = System.IO.Path.Combine(folderPath, "Inventory.xslx");
+                string excelFilePath = System.IO.Path.Combine(folderPath, "Inventory.xlsx");
+                string baseFileName = "Inventory";
+
+                int fileCounter = 1;
+                while (File.Exists(excelFilePath))
+                {
+                    string tempFileName = $"{baseFileName}({fileCounter}).xlsx";
+                    excelFilePath = System.IO.Path.Combine(folderPath, tempFileName);
+                    fileCounter++;
+                }
+
                 File.WriteAllBytes(excelFilePath, package.GetAsByteArray());
 
                 MessageBox.Show($"Spreadsheet saved to: \n{excelFilePath}", "Spreadsheet Saved", MessageBoxButton.OK);

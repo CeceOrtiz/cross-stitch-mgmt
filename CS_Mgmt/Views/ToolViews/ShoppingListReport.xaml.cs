@@ -40,7 +40,17 @@ namespace CS_Mgmt.Views.ToolViews
                 SaveToSpreadsheet(package, ItemsDG, "Shopping List");
 
                 string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string excelFilePath = System.IO.Path.Combine(folderPath, "ShoppingList.xslx");
+                string excelFilePath = System.IO.Path.Combine(folderPath, "ShoppingList.xlsx");
+                string baseFileName = "ShoppingList";
+
+                int fileCounter = 1;
+                while (File.Exists(excelFilePath))
+                {
+                    string tempFileName = $"{baseFileName}({fileCounter}).xlsx";
+                    excelFilePath = System.IO.Path.Combine(folderPath, tempFileName);
+                    fileCounter++;
+                }
+
                 File.WriteAllBytes(excelFilePath, package.GetAsByteArray());
 
                 MessageBox.Show($"Spreadsheet saved to: \n{excelFilePath}", "Spreadsheet Saved", MessageBoxButton.OK);
