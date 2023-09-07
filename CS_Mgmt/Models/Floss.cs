@@ -18,7 +18,7 @@ namespace CS_Mgmt.Models
         public string StandardName { get; set; }
         public string Color { get; set; }
 
-        public static List<Floss> GetFloss(string dbPath)
+        public static List<Floss> GetNonUserFloss(string dbPath)
         {
             using (var connection = new SQLiteConnection(dbPath))
             {
@@ -52,7 +52,6 @@ namespace CS_Mgmt.Models
                 return selectedFloss;
             }
         }
-
         public static List<Floss> GetAllFloss(string dbPath)
         {
             using (var connection = new SQLiteConnection(dbPath))

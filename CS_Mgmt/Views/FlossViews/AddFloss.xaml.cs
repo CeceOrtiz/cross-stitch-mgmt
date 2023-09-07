@@ -31,7 +31,7 @@ namespace CS_Mgmt.Views.FlossViews
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            List<Floss> nonUserFlossItems = Floss.GetFloss(App.DatabasePath);
+            List<Floss> nonUserFlossItems = Floss.GetNonUserFloss(App.DatabasePath);
 
             foreach (var floss in nonUserFlossItems)
             {
