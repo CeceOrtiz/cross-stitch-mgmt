@@ -1,18 +1,7 @@
 ﻿using CS_Mgmt.Views.Dashboard;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using CS_Mgmt.Models;
 using CS_Mgmt.Validations;
 using SQLite;
@@ -24,6 +13,7 @@ namespace CS_Mgmt.Views.FlossViews
     /// </summary>
     public partial class AddFloss : Page
     {
+        #region Initialization
         public AddFloss()
         {
             InitializeComponent();
@@ -55,9 +45,10 @@ namespace CS_Mgmt.Views.FlossViews
 
                 QuantityCB.Items.Add(qtyItem);
             }
-
         }
+        #endregion
 
+        #region Buttons
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedColor = ColorCB.SelectedItem as ComboBoxItem;
@@ -96,5 +87,6 @@ namespace CS_Mgmt.Views.FlossViews
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
+        #endregion
     }
 }

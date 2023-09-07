@@ -14,6 +14,7 @@ namespace CS_Mgmt.Views.FabricsViews
     /// </summary>
     public partial class ViewEditFabric : Page
     {
+        #region Initialization
         private int selectedFabricID;
         public ViewEditFabric(int fabricID)
         {
@@ -32,7 +33,9 @@ namespace CS_Mgmt.Views.FabricsViews
             CountTB.Text = fabric.Count.ToString();
             StorageLocationTB.Text = fabric.StorageLocation;
         }
+        #endregion
 
+        #region Buttons
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             string newType = TypeTB.Text;
@@ -72,7 +75,9 @@ namespace CS_Mgmt.Views.FabricsViews
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
+        #endregion
 
+        #region TextBox Limitations
         private void CountTB_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = IsTextNumeric(e.Text);
@@ -82,5 +87,6 @@ namespace CS_Mgmt.Views.FabricsViews
             Regex reg = new Regex("[^0-9]");
             return reg.IsMatch(text);
         }
+        #endregion
     }
 }
