@@ -2,20 +2,10 @@
 using CS_Mgmt.Validations;
 using CS_Mgmt.Views.Dashboard;
 using SQLite;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CS_Mgmt.Views.PatternViews
 {
@@ -24,6 +14,7 @@ namespace CS_Mgmt.Views.PatternViews
     /// </summary>
     public partial class ViewEditPattern : Page
     {
+        #region Initialization
         private int selectedPatternID;
         public ViewEditPattern(int patternID)
         {
@@ -113,7 +104,9 @@ namespace CS_Mgmt.Views.PatternViews
                 }
             }
         }
+        #endregion
 
+        #region Buttons
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             string name = NameTB.Text;
@@ -186,13 +179,6 @@ namespace CS_Mgmt.Views.PatternViews
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
 
-        private class PatternColorItem
-        {
-            public string FlossID { get; set; }
-            public string Color { get; set; }
-            public string SkeinsNeeded { get; set; }
-        }
-
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedColor = FlossColorCB.SelectedItem as ComboBoxItem;
@@ -242,5 +228,15 @@ namespace CS_Mgmt.Views.PatternViews
                 MessageBox.Show("Please select the floss you want to remove.");
             }
         }
+        #endregion
+
+        #region Classes
+        private class PatternColorItem
+        {
+            public string FlossID { get; set; }
+            public string Color { get; set; }
+            public string SkeinsNeeded { get; set; }
+        }
+        #endregion
     }
 }

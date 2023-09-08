@@ -4,17 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using OfficeOpenXml;
 
 namespace CS_Mgmt.Views.PatternViews
@@ -24,6 +17,7 @@ namespace CS_Mgmt.Views.PatternViews
     /// </summary>
     public partial class ViewPatternFloss : Page
     {
+        #region Initialization
         private int selectedPatternID;
         public ViewPatternFloss(int patternId)
         {
@@ -51,13 +45,6 @@ namespace CS_Mgmt.Views.PatternViews
                 });
             }
         }
-        private class PatternColorItem
-        {
-            public string FlossID { get; set; }
-            public string Color { get; set; }
-            public string SkeinsNeeded { get; set; }
-            public string SkeinsOwned { get; set; }
-        }
 
         private void PatternColorsDG_LoadingRow(object sender, DataGridRowEventArgs e)
         {
@@ -74,16 +61,24 @@ namespace CS_Mgmt.Views.PatternViews
                 e.Row.ClearValue(DataGridRow.BackgroundProperty);
             }
         }
+        #endregion
 
+        #region Classes
+        private class PatternColorItem
+        {
+            public string FlossID { get; set; }
+            public string Color { get; set; }
+            public string SkeinsNeeded { get; set; }
+            public string SkeinsOwned { get; set; }
+        }
+
+        #endregion
+
+        #region Buttons
         private void Return_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
-        }
-
-        private void PatternColorsDG_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            e.Handled = true;
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -99,7 +94,7 @@ namespace CS_Mgmt.Views.PatternViews
                     worksheet.Cells[1, col + 1].Value = PatternColorsDG.Columns[col].Header;
                 }
 
-                for (int row = 0; row < PatternColorsDG.Items.Count;  row++)
+                for (int row = 0; row < PatternColorsDG.Items.Count; row++)
                 {
                     var item = PatternColorsDG.Items[row];
 
@@ -127,5 +122,15 @@ namespace CS_Mgmt.Views.PatternViews
                 MessageBox.Show($"Spreadsheet saved to: \n{excelFilePath}", "Spreadsheet Saved", MessageBoxButton.OK);
             }
         }
+        #endregion
+
+        #region Limitations
+        private void PatternColorsDG_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        #endregion
+        
     }
 }

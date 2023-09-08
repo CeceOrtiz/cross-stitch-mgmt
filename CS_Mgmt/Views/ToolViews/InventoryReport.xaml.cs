@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using CS_Mgmt.Views.Dashboard;
 using OfficeOpenXml;
 using CS_Mgmt.Models;
@@ -24,6 +16,7 @@ namespace CS_Mgmt.Views.ToolViews
     /// </summary>
     public partial class InventoryReport : Page
     {
+        #region Initialization
         public InventoryReport()
         {
             InitializeComponent();
@@ -103,11 +96,17 @@ namespace CS_Mgmt.Views.ToolViews
             }
         }
 
+        #endregion
+
+        #region Limitations
         // Event handler for double-clicking DGs
         private void PatternsDG_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             e.Handled = true;
         }
+        #endregion
+
+        #region DGs
         private void ItemTypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem selectedItem = ItemTypeCB.SelectedItem as ComboBoxItem;
@@ -169,41 +168,14 @@ namespace CS_Mgmt.Views.ToolViews
             }
         }
 
-        
+        #endregion
 
+        #region Buttons
         // Save to Excel
-
         private void Return_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
-        }
-
-        // Classes for DG items
-        private class PatternItem
-        {
-            public string Name { get; set; }
-            public string StorageLocation { get; set; }
-        }
-        private class FlossItem
-        {
-            public string StandardName { get; set; }
-            public string Color { get; set; }
-            public string Quantity { get; set; }
-            public string StorageLocation { get; set; }
-        }
-        private class FabricItem
-        {
-            public string Color { get; set; }
-            public string Type { get; set; }
-            public string Count { get; set; }
-            public string StorageLocation { get; set; }
-        }
-        private class OtherItem
-        {
-            public string Item { get; set; }
-            public string Quantity { get; set; }
-            public string StorageLocation { get; set; }
         }
 
         private void SaveToExcel_Click(object sender, RoutedEventArgs e)
@@ -255,5 +227,35 @@ namespace CS_Mgmt.Views.ToolViews
                 }
             }
         }
+        #endregion
+
+        #region Classes
+        private class PatternItem
+        {
+            public string Name { get; set; }
+            public string StorageLocation { get; set; }
+        }
+        private class FlossItem
+        {
+            public string StandardName { get; set; }
+            public string Color { get; set; }
+            public string Quantity { get; set; }
+            public string StorageLocation { get; set; }
+        }
+        private class FabricItem
+        {
+            public string Color { get; set; }
+            public string Type { get; set; }
+            public string Count { get; set; }
+            public string StorageLocation { get; set; }
+        }
+        private class OtherItem
+        {
+            public string Item { get; set; }
+            public string Quantity { get; set; }
+            public string StorageLocation { get; set; }
+        }
+        #endregion
+        
     }
 }

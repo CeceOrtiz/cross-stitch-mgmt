@@ -5,19 +5,10 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CS_Mgmt.Views.ToolViews
 {
@@ -26,10 +17,31 @@ namespace CS_Mgmt.Views.ToolViews
     /// </summary>
     public partial class ShoppingListReport : Page
     {
+        #region Initialization
         public ShoppingListReport()
         {
             InitializeComponent();
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<Floss> allFloss = Floss.GetAllFloss(App.DatabasePath);
+            foreach (var floss in allFloss)
+            {
+                ComboBoxItem flossItem = new ComboBoxItem
+                {
+                    Content = $"{floss.StandardName} - {floss.Color}",
+                    Tag = floss.FlossId
+                };
+
+                FlossColorCB.Items.Add(flossItem);
+            }
+
+            ItemTypeCB.SelectedIndex = 0;
+        }
+        #endregion
+
+        #region Buttons
 
         private void SaveToExcel_Click(object sender, RoutedEventArgs e)
         {
@@ -83,6 +95,112 @@ namespace CS_Mgmt.Views.ToolViews
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
 
+        private void AddItem_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem cbItem = ItemTypeCB.SelectedItem as ComboBoxItem;
+            string itemType = cbItem.Content.ToString();
+
+            if (itemType == "Pattern")
+            {
+                bool continueSave = ShoppingValidation.PatternValidation(FirstTB.Text);
+
+                if (continueSave == true)
+                {
+                    ShoppingListItem sli = new ShoppingListItem
+                    {
+                        Item = "Pattern",
+                        Name = FirstTB.Text,
+                        Quantity = "1",
+                        Store = SecondTB.Text
+                    };
+                    ItemsDG.Items.Add(sli);
+                    FirstTB.Clear();
+                    SecondTB.Clear();
+                }
+            }
+
+            else if (itemType == "Floss")
+            {
+                ComboBoxItem selectedFloss = FlossColorCB.SelectedItem as ComboBoxItem;
+
+                bool continueSave = ShoppingValidation.FlossValidation(selectedFloss);
+
+                if (continueSave == true)
+                {
+                    ShoppingListItem sli = new ShoppingListItem
+                    {
+                        Item = "Floss",
+                        Name = selectedFloss.Content.ToString(),
+                        Quantity = string.IsNullOrEmpty(SecondTB.Text) ? "1" : SecondTB.Text,
+                        Store = ThirdTB.Text
+                    };
+                    ItemsDG.Items.Add(sli);
+                    SecondTB.Clear();
+                    ThirdTB.Clear();
+                }
+            }
+
+            else if (itemType == "Fabric")
+            {
+                bool continueSave = ShoppingValidation.FabricValidation(FirstTB.Text, SecondTB.Text);
+
+                if (continueSave == true)
+                {
+                    int count = 0;
+                    if (!string.IsNullOrEmpty(ThirdTB.Text))
+                    {
+                        count = int.Parse(ThirdTB.Text);
+                    }
+
+                    ShoppingListItem sli = new ShoppingListItem
+                    {
+                        Item = "Fabric",
+                        Name = FirstTB.Text + " - " + SecondTB.Text + " - " + count + " ct.",
+                        Quantity = string.IsNullOrEmpty(FourthTB.Text) ? "1" : FourthTB.Text,
+                        Store = FifthTB.Text
+                    };
+                    ItemsDG.Items.Add(sli);
+                    FirstTB.Clear();
+                    SecondTB.Clear();
+                    ThirdTB.Clear();
+                    FourthTB.Clear();
+                    FifthTB.Clear();
+                }
+            }
+
+            else if (itemType == "Other Item")
+            {
+                bool continueSave = ShoppingValidation.ItemValidation(FirstTB.Text);
+
+                if (continueSave == true)
+                {
+                    ShoppingListItem sli = new ShoppingListItem
+                    {
+                        Item = "Other Item",
+                        Name = FirstTB.Text,
+                        Quantity = string.IsNullOrEmpty(SecondTB.Text) ? "1" : SecondTB.Text,
+                        Store = ThirdTB.Text
+                    };
+                    ItemsDG.Items.Add(sli);
+                    FirstTB.Clear();
+                    SecondTB.Clear();
+                    ThirdTB.Clear();
+                }
+            }
+        }
+
+        private void RemoveItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (ItemsDG.SelectedItem != null)
+            {
+                ShoppingListItem selectedItem = (ShoppingListItem)ItemsDG.SelectedItem;
+                ItemsDG.Items.Remove(selectedItem);
+            }
+        }
+
+        #endregion
+
+        #region Form
         private void ItemTypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem cbItem = ItemTypeCB.SelectedItem as ComboBoxItem;
@@ -184,137 +302,12 @@ namespace CS_Mgmt.Views.ToolViews
                 FlossColorCB.Visibility = Visibility.Hidden;
             }
         }
+        #endregion
+
+        #region Limitations
         private void ItemsDG_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             e.Handled = true;
-        }
-
-        private void AddItem_Click(object sender, RoutedEventArgs e)
-        {
-            ComboBoxItem cbItem = ItemTypeCB.SelectedItem as ComboBoxItem;
-            string itemType = cbItem.Content.ToString();
-
-            if (itemType == "Pattern")
-            {
-                bool continueSave = ShoppingValidation.PatternValidation(FirstTB.Text);
-
-                if (continueSave == true)
-                {
-                    ShoppingListItem sli = new ShoppingListItem
-                    {
-                        Item = "Pattern",
-                        Name = FirstTB.Text,
-                        Quantity = "1",
-                        Store = SecondTB.Text
-                    };
-                    ItemsDG.Items.Add(sli);
-                    FirstTB.Clear();
-                    SecondTB.Clear();
-                }
-            }
-
-            else if (itemType == "Floss")
-            {
-                ComboBoxItem selectedFloss = FlossColorCB.SelectedItem as ComboBoxItem;
-
-                bool continueSave = ShoppingValidation.FlossValidation(selectedFloss);
-
-                if (continueSave == true)
-                {
-                    ShoppingListItem sli = new ShoppingListItem
-                    {
-                        Item = "Floss",
-                        Name = selectedFloss.Content.ToString(),
-                        Quantity = string.IsNullOrEmpty(SecondTB.Text) ? "1" : SecondTB.Text,
-                        Store = ThirdTB.Text
-                    };
-                    ItemsDG.Items.Add(sli);
-                    SecondTB.Clear();
-                    ThirdTB.Clear();
-                }
-            }
-
-            else if (itemType == "Fabric")
-            {
-                bool continueSave = ShoppingValidation.FabricValidation(FirstTB.Text, SecondTB.Text);
-
-                if (continueSave == true)
-                {
-                    int count = 0;
-                    if (!string.IsNullOrEmpty(ThirdTB.Text))
-                    {
-                        count = int.Parse(ThirdTB.Text);
-                    }
-
-                    ShoppingListItem sli = new ShoppingListItem
-                    {
-                        Item = "Fabric",
-                        Name = FirstTB.Text + " - " + SecondTB.Text + " - " + count + " ct.",
-                        Quantity = string.IsNullOrEmpty(FourthTB.Text) ? "1" : FourthTB.Text,
-                        Store = FifthTB.Text
-                    };
-                    ItemsDG.Items.Add(sli);
-                    FirstTB.Clear();
-                    SecondTB.Clear();
-                    ThirdTB.Clear();
-                    FourthTB.Clear();
-                    FifthTB.Clear();
-                }
-            }
-
-            else if (itemType == "Other Item")
-            {
-                bool continueSave = ShoppingValidation.ItemValidation(FirstTB.Text);
-
-                if (continueSave == true)
-                {
-                    ShoppingListItem sli = new ShoppingListItem
-                    {
-                        Item = "Other Item",
-                        Name = FirstTB.Text,
-                        Quantity = string.IsNullOrEmpty(SecondTB.Text) ? "1" : SecondTB.Text,
-                        Store = ThirdTB.Text
-                    };
-                    ItemsDG.Items.Add(sli);
-                    FirstTB.Clear();
-                    SecondTB.Clear();
-                    ThirdTB.Clear();
-                }
-            }
-        }
-
-        private class ShoppingListItem
-        {
-            public string Item { get; set; }
-            public string Name { get; set; }
-            public string Quantity { get; set; }
-            public string Store { get; set; }
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            List<Floss> allFloss = Floss.GetAllFloss(App.DatabasePath);
-            foreach (var floss in allFloss)
-            {
-                ComboBoxItem flossItem = new ComboBoxItem
-                {
-                    Content = $"{floss.StandardName} - {floss.Color}",
-                    Tag = floss.FlossId
-                };
-
-                FlossColorCB.Items.Add(flossItem);
-            }
-
-            ItemTypeCB.SelectedIndex = 0;
-        }
-
-        private void RemoveItem_Click(object sender, RoutedEventArgs e)
-        {
-            if (ItemsDG.SelectedItem != null)
-            {
-                ShoppingListItem selectedItem = (ShoppingListItem)ItemsDG.SelectedItem;
-                ItemsDG.Items.Remove(selectedItem);
-            }
         }
 
         private void SecondTB_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -355,5 +348,18 @@ namespace CS_Mgmt.Views.ToolViews
                 e.Handled = IsTextNumeric(e.Text);
             }
         }
+
+        #endregion
+
+        #region Classes
+        private class ShoppingListItem
+        {
+            public string Item { get; set; }
+            public string Name { get; set; }
+            public string Quantity { get; set; }
+            public string Store { get; set; }
+        }
+        #endregion
+
     }
 }

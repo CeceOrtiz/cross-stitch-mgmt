@@ -1,19 +1,8 @@
 ﻿using CS_Mgmt.Views.Dashboard;
 using CS_Mgmt.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SQLite;
 using CS_Mgmt.Validations;
 
@@ -24,6 +13,7 @@ namespace CS_Mgmt.Views.PatternViews
     /// </summary>
     public partial class AddPattern : Page
     {
+        #region Initialization
         public AddPattern()
         {
             InitializeComponent();
@@ -65,7 +55,9 @@ namespace CS_Mgmt.Views.PatternViews
                 SkeinsCB.Items.Add(skeinsQty);
             }
         }
+        #endregion
 
+        #region Buttons
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             string name = NameTB.Text;
@@ -130,7 +122,6 @@ namespace CS_Mgmt.Views.PatternViews
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
-
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedColor = FlossColorCB.SelectedItem as ComboBoxItem;
@@ -159,13 +150,6 @@ namespace CS_Mgmt.Views.PatternViews
             }
         }
 
-        private class PatternColorItem
-        {
-            public string FlossID { get; set; }
-            public string Color { get; set; }
-            public string SkeinsNeeded { get; set; }
-        }
-
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             if (PatternColorsDG.SelectedItem != null)
@@ -187,5 +171,16 @@ namespace CS_Mgmt.Views.PatternViews
                 MessageBox.Show("Please select the floss you want to remove.");
             }
         }
+        #endregion
+
+        #region Classes
+        private class PatternColorItem
+        {
+            public string FlossID { get; set; }
+            public string Color { get; set; }
+            public string SkeinsNeeded { get; set; }
+        }
+        #endregion
+
     }
 }
