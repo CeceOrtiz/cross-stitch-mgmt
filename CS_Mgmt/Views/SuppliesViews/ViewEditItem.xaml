@@ -15,11 +15,11 @@
         <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="117,184,0,0" VerticalAlignment="Top" Click="Save_Click"/>
         <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="176,184,0,0" VerticalAlignment="Top" Click="Cancel_Click"/>
         <Label x:Name="DescriptionLabel" Content="Description" HorizontalAlignment="Left" Margin="70,72,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="DescriptionTB" HorizontalAlignment="Left" Margin="155,76,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="350" FontSize="14"/>
+        <TextBox x:Name="DescriptionTB" HorizontalAlignment="Left" Margin="155,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350" FontSize="14" IsEnabled="False"/>
         <Label x:Name="QuantityLabel" Content="Quantity" HorizontalAlignment="Left" Margin="87,106,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="QuantityTB" HorizontalAlignment="Left" Margin="155,110,0,0" TextWrapping="Wrap" Text="User" VerticalAlignment="Top" Width="60" FontSize="14"/>
         <Label x:Name="StorageLocationLabel" Content="Storage Location" HorizontalAlignment="Left" Margin="36,142,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="StorageLocationTB" HorizontalAlignment="Left" Margin="155,146,0,0" TextWrapping="Wrap" Text="User Enter" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <TextBox x:Name="StorageLocationTB" HorizontalAlignment="Left" Margin="155,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <ComboBox x:Name="QuantityCB" HorizontalAlignment="Left" Margin="155,110,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
 
     </Grid>
 </Page>

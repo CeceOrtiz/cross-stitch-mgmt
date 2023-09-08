@@ -1,20 +1,11 @@
 ﻿using CS_Mgmt.Models;
 using CS_Mgmt.Views.Dashboard;
+using CS_Mgmt.Validations;
 using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace CS_Mgmt.Views.FabricsViews
 {
@@ -23,6 +14,7 @@ namespace CS_Mgmt.Views.FabricsViews
     /// </summary>
     public partial class ViewEditFabric : Page
     {
+        #region Initialization
         private int selectedFabricID;
         public ViewEditFabric(int fabricID)
         {
@@ -41,32 +33,41 @@ namespace CS_Mgmt.Views.FabricsViews
             CountTB.Text = fabric.Count.ToString();
             StorageLocationTB.Text = fabric.StorageLocation;
         }
+        #endregion
 
+        #region Buttons
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             string newType = TypeTB.Text;
             string newColor = ColorTB.Text;
-            int newCount = int.Parse(CountTB.Text);
+            string countStr = CountTB.Text;
             string newStorage = StorageLocationTB.Text;
 
-            Fabric fabric = new Fabric
-            {
-                FabricId = selectedFabricID,
-                Type = newType,
-                Color = newColor,
-                Count = newCount,
-                StorageLocation = newStorage
-            };
+            bool continueUpdate = FabricValidation.ValidFabric(newType, newColor, countStr);
 
-            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+            if (continueUpdate == true)
             {
-                connection.Update(fabric);
+                int newCount = string.IsNullOrEmpty(CountTB.Text) ? 0 : int.Parse(CountTB.Text);
+
+                Fabric fabric = new Fabric
+                {
+                    FabricId = selectedFabricID,
+                    Type = newType,
+                    Color = newColor,
+                    Count = newCount,
+                    StorageLocation = newStorage
+                };
+
+                using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+                {
+                    connection.Update(fabric);
+                }
+
+                MessageBox.Show("Updates saved!");
+
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainFrame.NavigationService.Navigate(new Dash());
             }
-
-            MessageBox.Show("Updates saved!");
-
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -74,5 +75,18 @@ namespace CS_Mgmt.Views.FabricsViews
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
+        #endregion
+
+        #region TextBox Limitations
+        private void CountTB_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = IsTextNumeric(e.Text);
+        }
+        private static bool IsTextNumeric(string text)
+        {
+            Regex reg = new Regex("[^0-9]");
+            return reg.IsMatch(text);
+        }
+        #endregion
     }
 }

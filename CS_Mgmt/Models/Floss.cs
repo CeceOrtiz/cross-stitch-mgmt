@@ -18,7 +18,7 @@ namespace CS_Mgmt.Models
         public string StandardName { get; set; }
         public string Color { get; set; }
 
-        public static List<Floss> GetFloss(string dbPath)
+        public static List<Floss> GetNonUserFloss(string dbPath)
         {
             using (var connection = new SQLiteConnection(dbPath))
             {
@@ -52,19 +52,25 @@ namespace CS_Mgmt.Models
                 return selectedFloss;
             }
         }
-
-        public static void DeleteFloss(string dbPath, int flossID)
+        public static List<Floss> GetAllFloss(string dbPath)
         {
             using (var connection = new SQLiteConnection(dbPath))
             {
-                connection.Table<Floss>().Delete(f => f.FlossId == flossID);
+                List<Floss> allFloss = connection.Table<Floss>().ToList();
+
+                return allFloss;
             }
-
-            MessageBox.Show("Floss deleted.");
-
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
+        public static List<Floss> GetPatternFlosses(string dbPath, List<PatternFloss> pFlosses)
+        {
+            using (var connection = new SQLiteConnection(dbPath))
+            {
+                List<int> flossIds = pFlosses.Select(pf => pf.FlossId).ToList();
 
+                List<Floss> flossEntries = connection.Table<Floss>().Where(f => flossIds.Contains(f.FlossId)).ToList();
+
+                return flossEntries;
+            }
+        }
     }
 }

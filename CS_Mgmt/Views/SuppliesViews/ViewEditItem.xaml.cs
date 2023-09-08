@@ -1,20 +1,9 @@
 ﻿using CS_Mgmt.Models;
 using CS_Mgmt.Views.Dashboard;
+using CS_Mgmt.Validations;
 using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CS_Mgmt.Views.SuppliesViews
 {
@@ -23,6 +12,7 @@ namespace CS_Mgmt.Views.SuppliesViews
     /// </summary>
     public partial class ViewEditItem : Page
     {
+        #region Initialization
         private int selectedSupplyID;
         public ViewEditItem(int supplyID)
         {
@@ -31,39 +21,67 @@ namespace CS_Mgmt.Views.SuppliesViews
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            // Populate the quantity box
+            for (int i = 1; i < 16; i++)
+            {
+                ComboBoxItem qtyItem = new ComboBoxItem
+                {
+                    Content = i,
+                    Tag = i
+                };
+
+                QuantityCB.Items.Add(qtyItem);
+            }
             PopulateFields(selectedSupplyID);
         }
         private void PopulateFields(int selectedSupplyId)
         {
             Supply supply = Supply.GetSelectedSupply(App.DatabasePath, selectedSupplyId);
             DescriptionTB.Text = supply.Description;
-            QuantityTB.Text = supply.Quantity.ToString();
             StorageLocationTB.Text = supply.StorageLocation;
-        }
 
+            foreach (ComboBoxItem item in QuantityCB.Items)
+            {
+                if (item.Content.ToString() == supply.Quantity.ToString())
+                {
+                    QuantityCB.SelectedItem = item;
+                    break;
+                }
+            }
+        }
+        #endregion
+
+        #region Buttons
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             string newDesc = DescriptionTB.Text;
-            int newQty = int.Parse(QuantityTB.Text);
-            string newStorage = StorageLocationTB.Text;
+            ComboBoxItem selectedQty = QuantityCB.SelectedItem as ComboBoxItem;
 
-            Supply supply = new Supply
-            {
-                SupplyId = selectedSupplyID,
-                Description = newDesc,
-                Quantity = newQty,
-                StorageLocation = newStorage
-            };
+            bool continueUpdate = ItemValidation.ValidItemQty(selectedQty);
 
-            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+            if (continueUpdate == true)
             {
-                connection.Update(supply);
+                int newQty = (int)selectedQty.Tag;
+                string newStorage = StorageLocationTB.Text;
+
+                Supply supply = new Supply
+                {
+                    SupplyId = selectedSupplyID,
+                    Description = newDesc,
+                    Quantity = newQty,
+                    StorageLocation = newStorage
+                };
+
+                using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+                {
+                    connection.Update(supply);
+                }
+
+                MessageBox.Show("Updates saved!");
+
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainFrame.NavigationService.Navigate(new Dash());
             }
-
-            MessageBox.Show("Updates saved!");
-
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -71,5 +89,7 @@ namespace CS_Mgmt.Views.SuppliesViews
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
+
+        #endregion
     }
 }

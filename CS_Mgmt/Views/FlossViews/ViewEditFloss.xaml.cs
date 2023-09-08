@@ -1,20 +1,9 @@
 ﻿using CS_Mgmt.Models;
 using CS_Mgmt.Views.Dashboard;
 using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using CS_Mgmt.Validations;
 
 namespace CS_Mgmt.Views.FlossViews
 {
@@ -23,6 +12,7 @@ namespace CS_Mgmt.Views.FlossViews
     /// </summary>
     public partial class ViewEditFloss : Page
     {
+        #region Initialization
         private int selectedFlossId;
 
         public ViewEditFloss(int flossId)
@@ -30,11 +20,10 @@ namespace CS_Mgmt.Views.FlossViews
             InitializeComponent();
             selectedFlossId = flossId;
         }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // Populate the quantity box
-            for (int i = 0; i < 16; i++)
+            for (int i = 1; i < 16; i++)
             {
                 ComboBoxItem qtyItem = new ComboBoxItem
                 {
@@ -47,7 +36,6 @@ namespace CS_Mgmt.Views.FlossViews
 
             PopulateFields(selectedFlossId);
         }
-
         private void PopulateFields(int selectedFlossId)
         {
             Floss floss = Floss.GetSelectedFloss(App.DatabasePath, selectedFlossId);
@@ -65,35 +53,42 @@ namespace CS_Mgmt.Views.FlossViews
                 }
             }
         }
+        #endregion
 
+        #region Buttons
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedQty = QuantityCB.SelectedItem as ComboBoxItem;
             int newQty = (int)selectedQty.Tag;
             string newStorage = StorageLocationTB.Text;
 
-            UserFloss userFloss = new UserFloss
-            {
-                FlossId = selectedFlossId,
-                Quantity = newQty,
-                StorageLocation = newStorage
-            };
+            bool continueUpdate = FlossValidation.ValidQty(selectedQty);
 
-            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+            if (continueUpdate == true)
             {
-                connection.Update(userFloss);
+                UserFloss userFloss = new UserFloss
+                {
+                    FlossId = selectedFlossId,
+                    Quantity = newQty,
+                    StorageLocation = newStorage
+                };
+
+                using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+                {
+                    connection.Update(userFloss);
+                }
+
+                MessageBox.Show("Updates saved!");
+
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainFrame.NavigationService.Navigate(new Dash());
             }
-
-            MessageBox.Show("Updates saved!");
-
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
-
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.MainFrame.NavigationService.Navigate(new Dash());
         }
+        #endregion
     }
 }

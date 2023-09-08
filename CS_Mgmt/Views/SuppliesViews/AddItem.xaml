@@ -7,7 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Background="White"
-      Title="AddItem">
+      Title="AddItem"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Label x:Name="AddItemLabel" Content="Add Item" HorizontalAlignment="Left" Margin="37,21,0,0" VerticalAlignment="Top" FontSize="26"/>
@@ -16,9 +17,9 @@
         <Label x:Name="DescriptionLabel" Content="Description" HorizontalAlignment="Left" Margin="76,68,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="DescriptionTB" HorizontalAlignment="Left" Margin="161,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350" FontSize="14"/>
         <Label x:Name="QuantityLabel" Content="Quantity" HorizontalAlignment="Left" Margin="93,102,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="QuantityTB" HorizontalAlignment="Left" Margin="161,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14"/>
         <Label x:Name="StorageLocationLabel" Content="Storage Location" HorizontalAlignment="Left" Margin="42,138,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="StorageLocationTB" HorizontalAlignment="Left" Margin="161,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
+        <ComboBox x:Name="QuantityCB" HorizontalAlignment="Left" Margin="161,106,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
 
     </Grid>
 </Page>
