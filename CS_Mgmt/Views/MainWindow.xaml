@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CS_Mgmt.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800">
+        Title="XStitch Inventory Manager" Height="550" Width="800">
     <Grid>
         <Frame x:Name="MainFrame" Content="Frame" HorizontalAlignment="Center" Height="514" VerticalAlignment="Center" Width="800" NavigationUIVisibility="Hidden"/>
 
