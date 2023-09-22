@@ -19,7 +19,7 @@
         <Label x:Name="NameLabel" Content="Name" HorizontalAlignment="Left" Margin="118,125,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="NameTB" HorizontalAlignment="Left" Margin="170,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
         <Label x:Name="StatusLabel" Content="Status" HorizontalAlignment="Left" Margin="118,161,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="StatusCB" HorizontalAlignment="Left" Margin="170,165,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
+        <ComboBox x:Name="StatusCB" HorizontalAlignment="Left" Margin="170,165,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="False"/>
         <Label x:Name="DimensionsLabel" Content="Dimensions" HorizontalAlignment="Left" Margin="83,197,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="DimensionsTB" HorizontalAlignment="Left" Margin="170,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <Label x:Name="FabricColorLabel" Content="Fabric Color" HorizontalAlignment="Left" Margin="81,233,0,0" VerticalAlignment="Top" FontSize="14"/>
@@ -31,9 +31,9 @@
         <Label x:Name="StorageLocationLabel" Content="Storage Location" HorizontalAlignment="Left" Margin="47,341,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="StorageLocationTB" HorizontalAlignment="Left" Margin="170,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
         <Label x:Name="ColorLabel" Content="Color" HorizontalAlignment="Left" Margin="486,279,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="FlossColorCB" HorizontalAlignment="Left" Margin="534,283,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
+        <ComboBox x:Name="FlossColorCB" HorizontalAlignment="Left" Margin="534,283,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="False"/>
         <Label x:Name="SkeinsNeededLabel" Content="Skeins Needed" HorizontalAlignment="Left" Margin="427,316,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="SkeinsCB" HorizontalAlignment="Left" Margin="534,319,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
+        <ComboBox x:Name="SkeinsCB" HorizontalAlignment="Left" Margin="534,319,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="False"/>
         <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Margin="508,356,0,0" VerticalAlignment="Top" Click="Add_Click"/>
         <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="556,356,0,0" VerticalAlignment="Top" Click="Delete_Click"/>
         <StackPanel x:Name="PatternColorsStack" Margin="461,123,149,186">

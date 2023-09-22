@@ -23,7 +23,7 @@
             </DataGrid>
         </StackPanel>
         <Label x:Name="ItemTypeLabel" Content="Item Type" HorizontalAlignment="Left" Margin="51,82,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="ItemTypeCB" HorizontalAlignment="Left" Margin="127,86,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True" SelectionChanged="ItemTypeCB_SelectionChanged">
+        <ComboBox x:Name="ItemTypeCB" HorizontalAlignment="Left" Margin="127,86,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="False" SelectionChanged="ItemTypeCB_SelectionChanged">
             <ComboBoxItem Content="Patterns"/>
             <ComboBoxItem Content="Floss"/>
             <ComboBoxItem Content="Fabrics"/>

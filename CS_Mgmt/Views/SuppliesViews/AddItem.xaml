@@ -19,7 +19,7 @@
         <Label x:Name="QuantityLabel" Content="Quantity" HorizontalAlignment="Left" Margin="93,102,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label x:Name="StorageLocationLabel" Content="Storage Location" HorizontalAlignment="Left" Margin="42,138,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="StorageLocationTB" HorizontalAlignment="Left" Margin="161,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
-        <ComboBox x:Name="QuantityCB" HorizontalAlignment="Left" Margin="161,106,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True"/>
+        <ComboBox x:Name="QuantityCB" HorizontalAlignment="Left" Margin="161,106,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="False"/>
 
     </Grid>
 </Page>
