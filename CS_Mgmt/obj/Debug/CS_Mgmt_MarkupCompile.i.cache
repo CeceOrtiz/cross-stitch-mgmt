@@ -16,5 +16,5 @@ C:\Users\lacey\source\repos\cross-stitch-mgmt\CS_Mgmt\App.xaml
 1372119124152
 Views\Dashboard\Dashboard.xaml;Views\FabricsViews\AddFabric.xaml;Views\FabricsViews\ViewEditFabric.xaml;Views\FlossViews\AddFloss.xaml;Views\FlossViews\ViewEditFloss.xaml;Views\MainWindow.xaml;Views\PatternViews\AddPattern.xaml;Views\PatternViews\ViewEditPattern.xaml;Views\PatternViews\ViewPatternFloss.xaml;Views\SuppliesViews\AddItem.xaml;Views\SuppliesViews\ViewEditItem.xaml;Views\ToolViews\InventoryReport.xaml;Views\ToolViews\ShoppingListReport.xaml;
 
-False
+True
 

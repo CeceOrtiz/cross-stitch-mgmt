@@ -15,7 +15,7 @@
         <Button x:Name="ReturnToDash" Content="Return to Dashboard" HorizontalAlignment="Left" Margin="37,420,0,0" VerticalAlignment="Top" Click="Return_Click"/>
         <Button x:Name="SaveToExcel" Content="Save to Excel Spreadsheet" HorizontalAlignment="Left" Margin="176,420,0,0" VerticalAlignment="Top" Click="SaveToExcel_Click"/>
         <Label x:Name="ItemTypeLabel" Content="Item Type" HorizontalAlignment="Left" Margin="484,79,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="ItemTypeCB" HorizontalAlignment="Left" Margin="560,83,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True" SelectionChanged="ItemTypeCB_SelectionChanged">
+        <ComboBox x:Name="ItemTypeCB" HorizontalAlignment="Left" Margin="560,83,0,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="False" SelectionChanged="ItemTypeCB_SelectionChanged">
             <ComboBoxItem Content="Pattern"/>
             <ComboBoxItem Content="Floss"/>
             <ComboBoxItem Content="Fabric"/>
@@ -47,7 +47,7 @@
         <TextBox x:Name="FourthTB" HorizontalAlignment="Left" Margin="519,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14" PreviewTextInput="FourthTB_PreviewTextInput"/>
         <Label x:Name="StoreLabel5" Content="Store" HorizontalAlignment="Left" Margin="472,298,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="FifthTB" HorizontalAlignment="Left" Margin="519,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="14"/>
-        <ComboBox x:Name="FlossColorCB" HorizontalAlignment="Left" Margin="519,141,0,0" VerticalAlignment="Top" Width="170" IsDropDownOpen="True"/>
+        <ComboBox x:Name="FlossColorCB" HorizontalAlignment="Left" Margin="519,141,0,0" VerticalAlignment="Top" Width="170" IsDropDownOpen="False"/>
         <Button x:Name="AddItem" Content="Add Item" HorizontalAlignment="Left" Margin="567,345,0,0" VerticalAlignment="Top" Click="AddItem_Click"/>
         <Button x:Name="RemoveItem" Content="Remove Selected Item" HorizontalAlignment="Left" Margin="533,378,0,0" VerticalAlignment="Top" Click="RemoveItem_Click"/>
 
